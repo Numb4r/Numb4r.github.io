@@ -229,29 +229,58 @@
             background-color: #3a7bd5;
         }
 
-        /* Responsive adjustments */
+        /* Responsive adjustments for smaller screens */
         @media (max-width: 768px) {
+            .container {
+                padding: 10px; /* Reduced padding for smaller screens */
+            }
             header {
                 padding: 30px 15px;
+                border-bottom-left-radius: 10px; /* Slightly smaller radius */
+                border-bottom-right-radius: 10px;
             }
-            h1 { font-size: 2em; }
+            h1 { font-size: 2em; } /* Adjusted font sizes for better mobile readability */
             h2 { font-size: 1.7em; }
             h3 { font-size: 1.3em; }
             h4 { font-size: 1.1em; }
             nav {
-                flex-direction: column;
+                flex-direction: column; /* Stack navigation links vertically */
                 align-items: center;
+                padding: 10px;
+                border-radius: 10px;
             }
             nav a {
-                width: 90%;
+                width: 100%; /* Make navigation links full width */
                 text-align: center;
+                margin-bottom: 5px; /* Add some space between stacked links */
             }
             section {
-                padding: 20px;
+                padding: 20px; /* Adjusted section padding */
+                border-radius: 10px;
+                margin-top: 20px;
+            }
+            .card {
+                padding: 15px; /* Smaller padding for cards */
+            }
+            .interactive-element {
+                padding: 10px; /* Smaller padding for interactive elements */
+            }
+            .quiz-container {
+                padding: 15px; /* Smaller padding for quiz container */
+            }
+            .quiz-options label {
+                padding: 10px; /* Larger touch target for quiz options */
             }
             .modal-content {
-                width: 90%;
+                width: 95%; /* Wider modal on small screens */
                 padding: 20px;
+                border-radius: 10px;
+            }
+            .slider-slide {
+                padding: 15px; /* Smaller padding for slider slides */
+            }
+            .slider-nav button {
+                padding: 8px 12px; /* Smaller buttons for slider navigation */
             }
         }
     </style>
@@ -381,6 +410,17 @@
                     <button class="button-primary mt-4" onclick="submitQuiz('administracao')">Verificar Resposta</button>
                     <div id="feedback-administracao" class="quiz-feedback"></div>
                 </div>
+
+                <div class="dynamic-quiz-section mt-8">
+                    <button class="button-primary" onclick="generateDynamicQuestion('administracao', 'Fundamentos de Administração e Atendimento')">Gerar Questão Adicional ✨</button>
+                    <div id="dynamic-quiz-administracao" class="quiz-container mt-4" style="display:none;">
+                        <h4 class="text-xl font-semibold mb-4">Questão Gerada por IA</h4>
+                        <div id="dynamic-quiz-question-administracao"></div>
+                        <button class="button-primary mt-4" onclick="submitDynamicQuiz('administracao')">Verificar Resposta</button>
+                        <div id="dynamic-feedback-administracao" class="quiz-feedback"></div>
+                    </div>
+                    <p id="loading-administracao" class="text-center text-gray-500 mt-4" style="display:none;">Gerando questão...</p>
+                </div>
             </section>
 
             <section id="rh">
@@ -441,6 +481,17 @@
                     <div id="quiz-rh"></div>
                     <button class="button-primary mt-4" onclick="submitQuiz('rh')">Verificar Resposta</button>
                     <div id="feedback-rh" class="quiz-feedback"></div>
+                </div>
+
+                <div class="dynamic-quiz-section mt-8">
+                    <button class="button-primary" onclick="generateDynamicQuestion('rh', 'Noções Essenciais de Recursos Humanos')">Gerar Questão Adicional ✨</button>
+                    <div id="dynamic-quiz-rh" class="quiz-container mt-4" style="display:none;">
+                        <h4 class="text-xl font-semibold mb-4">Questão Gerada por IA</h4>
+                        <div id="dynamic-quiz-question-rh"></div>
+                        <button class="button-primary mt-4" onclick="submitDynamicQuiz('rh')">Verificar Resposta</button>
+                        <div id="dynamic-feedback-rh" class="quiz-feedback"></div>
+                    </div>
+                    <p id="loading-rh" class="text-center text-gray-500 mt-4" style="display:none;">Gerando questão...</p>
                 </div>
             </section>
 
@@ -517,6 +568,17 @@
                     <button class="button-primary mt-4" onclick="submitQuiz('compras-estoque')">Verificar Resposta</button>
                     <div id="feedback-compras-estoque" class="quiz-feedback"></div>
                 </div>
+
+                <div class="dynamic-quiz-section mt-8">
+                    <button class="button-primary" onclick="generateDynamicQuestion('compras-estoque', 'Gestão de Compras e Estoque')">Gerar Questão Adicional ✨</button>
+                    <div id="dynamic-quiz-compras-estoque" class="quiz-container mt-4" style="display:none;">
+                        <h4 class="text-xl font-semibold mb-4">Questão Gerada por IA</h4>
+                        <div id="dynamic-quiz-question-compras-estoque"></div>
+                        <button class="button-primary mt-4" onclick="submitDynamicQuiz('compras-estoque')">Verificar Resposta</button>
+                        <div id="dynamic-feedback-compras-estoque" class="quiz-feedback"></div>
+                    </div>
+                    <p id="loading-compras-estoque" class="text-center text-gray-500 mt-4" style="display:none;">Gerando questão...</p>
+                </div>
             </section>
 
             <section id="tempo">
@@ -573,7 +635,7 @@
                             Organizar Pausas <span class="arrow">&#9660;</span>
                         </div>
                         <div class="accordion-content">
-                            <p>Incluir pausas estratégicas na programação para aumentar a produtividade e reduzir a fadiga mental e física.</p>
+                            <p>Incluir pausas estratégicas na programação para aumentar a produtividade e reduzir a fatiga mental e física.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
@@ -626,6 +688,17 @@
                     <button class="button-primary mt-4" onclick="submitQuiz('tempo')">Verificar Resposta</button>
                     <div id="feedback-tempo" class="quiz-feedback"></div>
                 </div>
+
+                <div class="dynamic-quiz-section mt-8">
+                    <button class="button-primary" onclick="generateDynamicQuestion('tempo', 'Gestão do Tempo para Produtividade')">Gerar Questão Adicional ✨</button>
+                    <div id="dynamic-quiz-tempo" class="quiz-container mt-4" style="display:none;">
+                        <h4 class="text-xl font-semibold mb-4">Questão Gerada por IA</h4>
+                        <div id="dynamic-quiz-question-tempo"></div>
+                        <button class="button-primary mt-4" onclick="submitDynamicQuiz('tempo')">Verificar Resposta</button>
+                        <div id="dynamic-feedback-tempo" class="quiz-feedback"></div>
+                    </div>
+                    <p id="loading-tempo" class="text-center text-gray-500 mt-4" style="display:none;">Gerando questão...</p>
+                </div>
             </section>
 
             <section id="atualidades">
@@ -649,6 +722,17 @@
                     <div id="quiz-atualidades"></div>
                     <button class="button-primary mt-4" onclick="submitQuiz('atualidades')">Verificar Resposta</button>
                     <div id="feedback-atualidades" class="quiz-feedback"></div>
+                </div>
+
+                <div class="dynamic-quiz-section mt-8">
+                    <button class="button-primary" onclick="generateDynamicQuestion('atualidades', 'Conhecimentos Gerais e Atualidades')">Gerar Questão Adicional ✨</button>
+                    <div id="dynamic-quiz-atualidades" class="quiz-container mt-4" style="display:none;">
+                        <h4 class="text-xl font-semibold mb-4">Questão Gerada por IA</h4>
+                        <div id="dynamic-quiz-question-atualidades"></div>
+                        <button class="button-primary mt-4" onclick="submitDynamicQuiz('atualidades')">Verificar Resposta</button>
+                        <div id="dynamic-feedback-atualidades" class="quiz-feedback"></div>
+                    </div>
+                    <p id="loading-atualidades" class="text-center text-gray-500 mt-4" style="display:none;">Gerando questão...</p>
                 </div>
             </section>
 
@@ -692,6 +776,17 @@
                     <div id="quiz-informatica"></div>
                     <button class="button-primary mt-4" onclick="submitQuiz('informatica')">Verificar Resposta</button>
                     <div id="feedback-informatica" class="quiz-feedback"></div>
+                </div>
+
+                <div class="dynamic-quiz-section mt-8">
+                    <button class="button-primary" onclick="generateDynamicQuestion('informatica', 'Informática: Pacote Microsoft Office')">Gerar Questão Adicional ✨</button>
+                    <div id="dynamic-quiz-informatica" class="quiz-container mt-4" style="display:none;">
+                        <h4 class="text-xl font-semibold mb-4">Questão Gerada por IA</h4>
+                        <div id="dynamic-quiz-question-informatica"></div>
+                        <button class="button-primary mt-4" onclick="submitDynamicQuiz('informatica')">Verificar Resposta</button>
+                        <div id="dynamic-feedback-informatica" class="quiz-feedback"></div>
+                    </div>
+                    <p id="loading-informatica" class="text-center text-gray-500 mt-4" style="display:none;">Gerando questão...</p>
                 </div>
             </section>
 
@@ -737,6 +832,37 @@
                     </div>
                     <div class="accordion-item">
                         <div class="accordion-header">
+                            Regra de Três Composta <span class="arrow">&#9660;</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Utilizada quando há mais de duas grandezas envolvidas. Identificar todas as grandezas, comparar cada uma com a grandeza que contém o termo desconhecido para determinar a proporcionalidade.</p>
+                            <p>Exemplo: Se 2 máquinas produzem 100 itens em 5 horas, 3 máquinas produzem 150 itens em X horas.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>8.4. Média Aritmética Simples e Ponderada: Definição e Cálculo</h3>
+                <p class="mb-4">A média aritmética é uma medida de tendência central que representa um conjunto de valores.</p>
+                <div class="interactive-element">
+                    <h4 class="text-xl font-semibold mb-2">Média Aritmética Simples:</h4>
+                    <p>Calculada somando-se todos os elementos de um conjunto e dividindo o resultado pela quantidade de elementos. <br>Fórmula: $M = \frac{\text{Soma dos elementos}}{\text{Quantidade de elementos}}$</p>
+                    <h4 class="text-xl font-semibold mb-2 mt-4">Média Aritmética Ponderada:</h4>
+                    <p>Atribui "pesos" a cada valor. Multiplica-se cada valor pelo seu respectivo peso, somam-se esses produtos e divide-se o total pela soma de todos os pesos. <br>Fórmula: $M = \frac{\sum(\text{valor} \times \text{peso})}{\sum \text{pesos}}$</p>
+                </div>
+
+                <h3>8.5. Equações de $1^{\circ}$ e $2^{\circ}$ Grau: Resolução</h3>
+                <div class="accordion-container">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Equações do $1^{\circ}$ Grau <span class="arrow">&#9660;</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Equações em que a incógnita possui expoente 1 e envolvem apenas operações de adição e subtração. Podem ser resolvidas graficamente ou algebricamente.</p>
+                            <p>Forma geral: $ax+b=0$</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
                             Equações do $2^{\circ}$ Grau <span class="arrow">&#9660;</span>
                         </div>
                         <div class="accordion-content">
@@ -760,6 +886,17 @@
                     <div id="quiz-matematica"></div>
                     <button class="button-primary mt-4" onclick="submitQuiz('matematica')">Verificar Resposta</button>
                     <div id="feedback-matematica" class="quiz-feedback"></div>
+                </div>
+
+                <div class="dynamic-quiz-section mt-8">
+                    <button class="button-primary" onclick="generateDynamicQuestion('matematica', 'Matemática Aplicada para Concursos')">Gerar Questão Adicional ✨</button>
+                    <div id="dynamic-quiz-matematica" class="quiz-container mt-4" style="display:none;">
+                        <h4 class="text-xl font-semibold mb-4">Questão Gerada por IA</h4>
+                        <div id="dynamic-quiz-question-matematica"></div>
+                        <button class="button-primary mt-4" onclick="submitDynamicQuiz('matematica')">Verificar Resposta</button>
+                        <div id="dynamic-feedback-matematica" class="quiz-feedback"></div>
+                    </div>
+                    <p id="loading-matematica" class="text-center text-gray-500 mt-4" style="display:none;">Gerando questão...</p>
                 </div>
             </section>
 
@@ -805,6 +942,17 @@
                     <div id="quiz-portugues"></div>
                     <button class="button-primary mt-4" onclick="submitQuiz('portugues')">Verificar Resposta</button>
                     <div id="feedback-portugues" class="quiz-feedback"></div>
+                </div>
+
+                <div class="dynamic-quiz-section mt-8">
+                    <button class="button-primary" onclick="generateDynamicQuestion('portugues', 'Português: Gramática e Interpretação de Texto')">Gerar Questão Adicional ✨</button>
+                    <div id="dynamic-quiz-portugues" class="quiz-container mt-4" style="display:none;">
+                        <h4 class="text-xl font-semibold mb-4">Questão Gerada por IA</h4>
+                        <div id="dynamic-quiz-question-portugues"></div>
+                        <button class="button-primary mt-4" onclick="submitDynamicQuiz('portugues')">Verificar Resposta</button>
+                        <div id="dynamic-feedback-portugues" class="quiz-feedback"></div>
+                    </div>
+                    <p id="loading-portugues" class="text-center text-gray-500 mt-4" style="display:none;">Gerando questão...</p>
                 </div>
             </section>
 
@@ -969,13 +1117,7 @@
             updateSlider(sliderId);
         }
 
-        // Inicializar sliders ao carregar a página
-        document.addEventListener('DOMContentLoaded', () => {
-            initializeSlider('podc-slider');
-            initializeSlider('tempo-methods-slider');
-        });
-
-        // Lógica do Quiz
+        // Lógica do Quiz (pré-definido)
         const quizzes = {
             atualidades: {
                 question: "Qual tecnologia é esperada para ser explorada com ainda mais intensidade em 2025, de acordo com o texto?",
@@ -1059,6 +1201,13 @@
             }
         };
 
+        // Stores the current dynamic question and its answer for each section
+        const dynamicQuizzes = {};
+
+        /**
+         * Loads a predefined quiz into the specified container.
+         * @param {string} quizId - The ID of the quiz to load (e.g., 'atualidades').
+         */
         function loadQuiz(quizId) {
             const quizContainer = document.getElementById(`quiz-${quizId}`);
             const quizData = quizzes[quizId];
@@ -1073,6 +1222,10 @@
             }
         }
 
+        /**
+         * Submits a predefined quiz and displays feedback.
+         * @param {string} quizId - The ID of the quiz to submit.
+         */
         function submitQuiz(quizId) {
             const quizData = quizzes[quizId];
             const feedbackElement = document.getElementById(`feedback-${quizId}`);
@@ -1092,8 +1245,128 @@
             }
         }
 
-        // Carregar quizzes ao carregar a página
+        /**
+         * Generates a dynamic multiple-choice question using the Gemini API based on section content.
+         * @param {string} sectionId - The ID of the HTML section to extract content from.
+         * @param {string} topicName - The name of the topic for the LLM prompt.
+         */
+        async function generateDynamicQuestion(sectionId, topicName) {
+            const dynamicQuizContainer = document.getElementById(`dynamic-quiz-${sectionId}`);
+            const dynamicQuizQuestionDiv = document.getElementById(`dynamic-quiz-question-${sectionId}`);
+            const loadingMessage = document.getElementById(`loading-${sectionId}`);
+            const feedbackElement = document.getElementById(`dynamic-feedback-${sectionId}`);
+
+            // Hide previous question and show loading
+            dynamicQuizContainer.style.display = 'none';
+            feedbackElement.textContent = '';
+            loadingMessage.style.display = 'block';
+
+            try {
+                // Get the text content of the section
+                const sectionContentElement = document.getElementById(sectionId);
+                let textContent = sectionContentElement.innerText;
+
+                // Truncate text content if it's too long for the LLM (adjust as needed)
+                const maxTextLength = 4000; // Example: 4000 characters
+                if (textContent.length > maxTextLength) {
+                    textContent = textContent.substring(0, maxTextLength) + "...";
+                }
+
+                // Construct the prompt for the LLM
+                const prompt = `Based on the following text about "${topicName}", generate ONE multiple-choice question with 4 options and the correct answer. The response MUST be in JSON format with the keys 'question' (string), 'options' (array of strings), and 'answer' (string, which must be one of the options). Ensure the question and options are in Portuguese.\n\nText: ${textContent}`;
+
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+
+                const payload = {
+                    contents: chatHistory,
+                    generationConfig: {
+                        responseMimeType: "application/json",
+                        responseSchema: {
+                            type: "OBJECT",
+                            properties: {
+                                "question": { "type": "STRING" },
+                                "options": {
+                                    "type": "ARRAY",
+                                    "items": { "type": "STRING" }
+                                },
+                                "answer": { "type": "STRING" }
+                            },
+                            "propertyOrdering": ["question", "options", "answer"]
+                        }
+                    }
+                };
+
+                const apiKey = ""; // Canvas will automatically provide the API key
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const jsonString = result.candidates[0].content.parts[0].text;
+                    const generatedQuestion = JSON.parse(jsonString);
+
+                    // Store the generated question and its answer
+                    dynamicQuizzes[sectionId] = generatedQuestion;
+
+                    // Display the generated question
+                    let html = `<div class="quiz-question">${generatedQuestion.question}</div><div class="quiz-options">`;
+                    generatedQuestion.options.forEach((option, index) => {
+                        html += `<label><input type="radio" name="dynamic-${sectionId}-question" value="${option}"> ${option}</label>`;
+                    });
+                    html += `</div>`;
+                    dynamicQuizQuestionDiv.innerHTML = html;
+                    dynamicQuizContainer.style.display = 'block'; // Show the quiz container
+                } else {
+                    dynamicQuizQuestionDiv.innerHTML = `<p class="text-red-500">Não foi possível gerar uma questão. Tente novamente.</p>`;
+                    dynamicQuizContainer.style.display = 'block';
+                }
+            } catch (error) {
+                console.error("Erro ao gerar questão dinâmica:", error);
+                dynamicQuizQuestionDiv.innerHTML = `<p class="text-red-500">Ocorreu um erro ao gerar a questão. Verifique a conexão ou tente novamente.</p>`;
+                dynamicQuizContainer.style.display = 'block';
+            } finally {
+                loadingMessage.style.display = 'none'; // Hide loading message
+            }
+        }
+
+        /**
+         * Submits a dynamically generated quiz and displays feedback.
+         * @param {string} sectionId - The ID of the section the dynamic quiz belongs to.
+         */
+        function submitDynamicQuiz(sectionId) {
+            const quizData = dynamicQuizzes[sectionId];
+            const feedbackElement = document.getElementById(`dynamic-feedback-${sectionId}`);
+            const selectedOption = document.querySelector(`input[name="dynamic-${sectionId}-question"]:checked`);
+
+            if (selectedOption) {
+                if (selectedOption.value === quizData.answer) {
+                    feedbackElement.textContent = "Correto! 🎉";
+                    feedbackElement.className = "quiz-feedback correct";
+                } else {
+                    feedbackElement.textContent = `Incorreto. A resposta correta é: ${quizData.answer}`;
+                    feedbackElement.className = "quiz-feedback incorrect";
+                }
+            } else {
+                feedbackElement.textContent = "Por favor, selecione uma opção.";
+                feedbackElement.className = "quiz-feedback";
+            }
+        }
+
+
+        // Inicializar sliders e quizzes pré-definidos ao carregar a página
         document.addEventListener('DOMContentLoaded', () => {
+            initializeSlider('podc-slider');
+            initializeSlider('tempo-methods-slider');
+
             for (const quizId in quizzes) {
                 loadQuiz(quizId);
             }
