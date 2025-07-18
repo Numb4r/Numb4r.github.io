@@ -1,59 +1,1104 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-    html,
-    body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Preparatório Completo para Concursos e Processos Seletivos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: #4a90e2;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        nav {
+            background-color: #ffffff;
+            padding: 15px 20px;
+            border-radius: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        nav a {
+            padding: 10px 15px;
+            border-radius: 10px;
+            color: #4a90e2;
+            font-weight: 600;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        nav a:hover {
+            background-color: #4a90e2;
+            color: white;
+        }
+        section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            margin-top: 30px;
+        }
+        h1, h2, h3, h4 {
+            color: #2c5282;
+            font-weight: 700;
+        }
+        h1 { font-size: 2.5em; }
+        h2 { font-size: 2em; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 20px; }
+        h3 { font-size: 1.5em; margin-top: 25px; margin-bottom: 15px; }
+        h4 { font-size: 1.2em; margin-top: 20px; margin-bottom: 10px; }
+        .card {
+            background-color: #f7fafc;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        .interactive-element {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e6f0fa;
+            border-left: 5px solid #4a90e2;
+            border-radius: 8px;
+        }
+        .accordion-header {
+            background-color: #4a90e2;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        .accordion-header:hover {
+            background-color: #3a7bd5;
+        }
+        .accordion-content {
+            background-color: #f0f2f5;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            max-height: 0;
+            padding: 0 15px;
+        }
+        .accordion-content.active {
+            padding: 15px;
+        }
+        .quiz-container {
+            background-color: #e6f0fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border: 1px solid #4a90e2;
+        }
+        .quiz-question {
+            margin-bottom: 15px;
+            font-weight: 600;
+            color: #2c5282;
+        }
+        .quiz-options label {
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+            padding: 8px 12px;
+            background-color: #f7fafc;
+            border: 1px solid #cbd5e0;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+        .quiz-options label:hover {
+            background-color: #e2e8f0;
+        }
+        .quiz-options input[type="radio"] {
+            margin-right: 8px;
+        }
+        .quiz-feedback {
+            margin-top: 15px;
+            font-weight: 600;
+        }
+        .correct { color: #22c55e; }
+        .incorrect { color: #ef4444; }
 
-    iframe {
-      width: 100%;
-      height: 100%;
-    }
-  </style>
+        .slider-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            margin-top: 20px;
+        }
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slider-slide {
+            min-width: 100%;
+            box-sizing: border-box;
+            padding: 20px;
+            background-color: #f7fafc;
+            border-radius: 10px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+            gap: 10px;
+        }
+        .slider-nav button {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .slider-nav button:hover {
+            background-color: #3a7bd5;
+        }
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+        }
+        .close-button {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .button-primary {
+            background-color: #4a90e2;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+        .button-primary:hover {
+            background-color: #3a7bd5;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header {
+                padding: 30px 15px;
+            }
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.7em; }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.1em; }
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav a {
+                width: 90%;
+                text-align: center;
+            }
+            section {
+                padding: 20px;
+            }
+            .modal-content {
+                width: 90%;
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <iframe src=".\files\Reuniao11.pdf">
-    <!-- <h1 id="data-poisoning">Data Poisoning</h1>
-  <ul>
-    <li>[ ] <a href="https://www.usenix.org/conference/usenixsecurity20/presentation/fang">Local Model Poisoning Attacks
-        to Byzantine-Robust Federated Learning</a></li>
-    <li>[x] <a
-        href="https://ieeexplore.ieee.org/abstract/document/8975792?casa_token=oavtBGrYgysAAAAA%3Aq_8sO2EEsau45SLLD1zt9R6daBXVJKJNpNCFHxbNIPV2gZpWYbT1EVZPEGF80as-RtKuLH__Qw">Understanding
-        Distributed Poisoning Attack in Federated Learning</a></li>
-    <li>[x] <a href="https://www.mdpi.com/1999-5903/13/3/73"> Deep Model Poisoning Attack on Federated Learning </a>
-    </li>
-    <li>[ ] <a
-        href="https://dl.acm.org/doi/abs/10.1145/3128572.3140450?casa_token=0xCeA0mBNAMAAAAA:PZwcqXsTd5NaN2dPzNqWphlwqdUncifsTRH_uiV3WbP_x_XAVvnmQzCx03tWOdOx2klFpxXs0sSB">Mitigating
-        Poisoning Attacks on Machine Learning Models: A Data Provenance Based Approach</a></li>
-    <li>[x] <a href="https://link.springer.com/chapter/10.1007/978-3-030-58951-6_24">Data Poisoning Attacks Against
-        Federated Learning Systems</a></li>
-    <li>[x] <a
-        href="https://ieeexplore.ieee.org/abstract/document/9618642?casa_token=KVk6rtV2RvYAAAAA%3A-WhipsHI6fZChV6_zjrP03utaLOWAMaXQ0REGnCDNYOqRIPYpLN0aEV28I0w9RR5s3ypEJo83Q">Data
-        Poisoning Attacks on Federated Machine Learning</a></li>
-    <li>[x] <a
-        href="https://www.sciencedirect.com/science/article/pii/S0957417422012933?casa_token=48ZYEhEBkDkAAAAA:6Yatprib93HcWnrTOVqxm9pr_C1-l58HmuYsJk-8aeujyeQXGeJsis5U1t99bObs2CsW23g7vw">Data
-        poisoning attacks against machine learning algorithms</a></li>
-    <li>[ ] <a
-        href="https://dl.acm.org/doi/abs/10.1145/3551636?casa_token=mEnn8YlUYrIAAAAA:oqj9Qto3NRt032tkZrwgYfo2VhTzow-dZ5mjqFfYMi0XuPWvqWWqikDRVvY6XZNC4dtUS9AZYRqu">A
-        Comprehensive Survey on Poisoning Attacks and Countermeasures in Machine Learning</a></li>
-    <li>[x] <a
-        href="https://ieeexplore.ieee.org/abstract/document/8418594?casa_token=vW88QJtTJdIAAAAA%3AXXNaflt7CHXEnAMun40lUuKiduBFtAaBoBaSvHJ7_6SXAtusWyBEfBNnWgqZpB8PSrRxiD-LIA">Manipulating
-        Machine Learning: Poisoning Attacks and Countermeasures for Regression Learning</a></li>
-    <li>[ ] <a
-        href="https://dl.acm.org/doi/abs/10.1145/3538707?casa_token=5DKuGGUkhWsAAAAA:ALRr37wlUFVKpRGUW73uhGfjBi8xfa1zy3BgZol5Km9LHHiSsEde6aFTnYdLLRizROMIfCZFvx0T">Threats
-        to Training: A Survey of Poisoning Attacks and Defenses on Machine Learning Systems</a></li>
-  </ul> -->
+    <div class="container">
+        <header>
+            <h1 class="text-white text-4xl mb-4">Guia Preparatório Completo para Concursos e Processos Seletivos</h1>
+            <p class="text-white text-lg">Seu caminho para o sucesso em concursos públicos e processos seletivos.</p>
+            <button id="start-studying-btn" class="button-primary mt-6">Comece a Estudar Agora</button>
+        </header>
 
+        <nav>
+            <a href="#administracao">Administração e Atendimento</a>
+            <a href="#rh">Recursos Humanos</a>
+            <a href="#compras-estoque">Compras e Estoque</a>
+            <a href="#tempo">Gestão do Tempo</a>
+            <a href="#atualidades">Atualidades</a>
+            <a href="#informatica">Informática</a>
+            <a href="#matematica">Matemática</a>
+            <a href="#portugues">Português</a>
+            <a href="#simulados">Simulados Online</a>
+        </nav>
+
+        <main>
+            <section id="introducao">
+                <h2 class="text-2xl font-bold mb-4">Bem-vindo ao Seu Guia de Estudos Definitivo</h2>
+                <p class="mb-4">Este guia abrangente foi elaborado para ser seu companheiro essencial, cobrindo as áreas fundamentais frequentemente exigidas em concursos públicos e processos seletivos no Brasil. A proficiência nestes tópicos não apenas demonstra conhecimento técnico, mas também habilidades interpessoais e de raciocínio crítico, essenciais para o desempenho profissional. Nossa estrutura visa fornecer tanto o embasamento teórico quanto recursos práticos para a autoavaliação, garantindo uma preparação holística.</p>
+                <div class="interactive-element">
+                    <p class="font-semibold">Dica Rápida:</p>
+                    <p>Para otimizar seu estudo, recomendamos a leitura sequential dos tópicos para construir uma base sólida de conhecimento. Além disso, a prática constante com simulados é crucial para fixar o conteúdo e familiarizar-se com o formato das provas.</p>
+                </div>
+            </section>
+
+            <section id="administracao">
+                <h2 class="text-2xl font-bold mb-4">2. Fundamentos de Administração e Atendimento</h2>
+
+                <h3>2.1. Conhecimentos Básicos de Administração: Conceitos e Funções</h3>
+                <p class="mb-4">A Administração é uma disciplina que se manifesta tanto como ciência quanto como arte, focada na gestão de recursos (humanos, financeiros, materiais ou tecnológicos) para alcançar os objetivos de uma organização de maneira eficaz e eficiente. Seu escopo abrange o planejamento, a organização, a direção e o controle da produção e distribuição de bens e serviços, visando maximizar a eficiência (fazer as coisas corretamente) e a eficácia (fazer as coisas certas) para garantir o sucesso a longo prazo.</p>
+
+                <div class="slider-container">
+                    <div class="slider-wrapper" id="podc-slider">
+                        <div class="slider-slide">
+                            <h4 class="text-xl font-semibold mb-2">Planejamento</h4>
+                            <p>É o ponto de partida de qualquer gestão, envolvendo a definição clara de objetivos, o desenvolvimento de estratégias e a elaboração de planos de ação detalhados. No atendimento, significa organizar o fluxo, definir metas de tempo de resposta e preparar materiais de apoio.</p>
+                        </div>
+                        <div class="slider-slide">
+                            <h4 class="text-xl font-semibold mb-2">Organização</h4>
+                            <p>Os gestores estruturam os recursos disponíveis da empresa (pessoas, equipamentos, capital, informações) para otimizar sua utilização, incluindo a criação de estruturas eficientes e a definição de responsabilidades claras. No atendimento, é disponibilizar ferramentas eficientes e estruturar os níveis de atendimento.</p>
+                        </div>
+                        <div class="slider-slide">
+                            <h4 class="text-xl font-semibold mb-2">Direção (ou Liderança)</h4>
+                            <p>Esta função é sobre a condução e motivação das equipes. Envolve inspirar e motivar os membros da organização a trabalharem em prol dos objetivos estabelecidos. No atendimento, é promover a cultura de empatia e respeito, e treinar a equipe.</p>
+                        </div>
+                        <div class="slider-slide">
+                            <h4 class="text-xl font-semibold mb-2">Controle</h4>
+                            <p>A função de controle é o monitoramento contínuo do desempenho. Ela visa avaliar o progresso da organização em relação aos objetivos estabelecidos, identificando desvios e tomando medidas corretivas quando necessário. No atendimento, é coletar feedback, monitorar tempo de espera e analisar a qualidade das interações.</p>
+                        </div>
+                    </div>
+                    <div class="slider-nav">
+                        <button onclick="moveSlider('podc-slider', -1)">Anterior</button>
+                        <button onclick="moveSlider('podc-slider', 1)">Próximo</button>
+                    </div>
+                </div>
+
+                <h3>2.2. Atendimento ao Cliente: Princípios Essenciais e Processos</h3>
+                <p class="mb-4">A qualidade do atendimento ao cliente é um pilar fundamental para o sucesso de qualquer organização. Prestar um bom atendimento é o segredo para fidelizar relacionamentos e, consequentemente, aumentar as vendas. Este processo não se encerra quando a solicitação do cliente é atendida, mas sim quando a empresa obtém um feedback sobre a qualidade do atendimento e documenta todas as ações tomadas para solucionar a demanda.</p>
+                <p class="mb-4">Os princípios fundamentais do atendimento ao cliente iniciam-se com empatia e respeito. É essencial ouvir o cliente atentamente, compreender suas necessidades e responder de maneira clara e rápida para construir uma experiência positiva. A personalização do atendimento é igualmente importante, assim como a proatividade, eficiência e transparência.</p>
+                <div class="interactive-element">
+                    <h4 class="text-xl font-semibold mb-2">Canais de Atendimento Atuais</h4>
+                    <ul class="list-disc list-inside">
+                        <li><strong>Telefone:</strong> Preferido por muitos para suporte direto e imediato.</li>
+                        <li><strong>Chat em tempo real:</strong> Oferece conveniência e rapidez na interação.</li>
+                        <li><strong>Redes Sociais:</strong> Além de canais de atendimento, funcionam como vitrine da empresa.</li>
+                    </ul>
+                </div>
+
+                <h3>2.3. Excelência no Atendimento ao Cidadão: Importância, Conceitos e Boas Práticas no Serviço Público</h3>
+                <p class="mb-4">A excelência no atendimento ao cidadão transcende a mera obrigação; ela representa um compromisso intrínseco que todo servidor público deve assumir. Este conceito se refere à maneira como os órgãos governamentais interagem e respondem às demandas do público, buscando incessantemente a satisfação e a resolução efetiva de suas necessidades.</p>
+
+                <div class="accordion-container">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Evolução do Estado e Atendimento ao Cidadão <span class="arrow">&#9660;</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>A história brasileira transita do Estado Patrimonialista (bens públicos tratados como propriedade privada) para o Estado Burocrático (foco excessivo em procedimentos) e, finalmente, para o Estado Gerencial, que enfatiza resultados, descentralização, flexibilidade e participação cidadã. A compreensão dessa evolução é crucial, pois o cidadão contemporâneo busca uma experiência de serviço que o "encante".</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Ética na Esfera Pública e Comunicação Eficaz <span class="arrow">&#9660;</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>A ética é um pilar inegociável, assegurando a conformidade com os princípios da administração pública: legalidade, impessoalidade, moralidade, publicidade e eficiência. A comunicação eficaz é vital para um diálogo produtivo, incluindo comunicação verbal e não-verbal, evitando jargões técnicos e praticando a escuta ativa.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Momento da Verdade (MV) e Ciclo do Atendimento <span class="arrow">&#9660;</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>O "Momento da Verdade" é qualquer ponto de contato entre o cidadão e o órgão público, sendo o teste decisivo para a qualidade do serviço. Pode ser "Encantado", "Desencantado" ou "Apático". O ciclo do atendimento envolve planejamento, recebimento do cidadão, compreensão das necessidades, geração de soluções e fortalecimento do relacionamento.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Sete Pecados do Atendimento ao Cidadão <span class="arrow">&#9660;</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Apatia, Má Vontade, Frieza, Desdém, Robotismo, Apego Excessivo às Regras e Transferência de Culpa. Devem ser evitados para garantir a excelência no atendimento.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Atendimento a Pessoas com Deficiência <span class="arrow">&#9660;</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Diretrizes específicas para auxiliar indivíduos com deficiência visual (oferecer ajuda, guiar pelo braço), auditiva (falar claramente, manter contato visual, usar escrita se necessário) e física (não se apoiar em cadeiras de rodas, sentar-se ao nível dos olhos se o atendimento for longo), sempre enfatizando o respeito e a comunicação adequada.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz-container">
+                    <h4 class="text-xl font-semibold mb-4">Teste Rápido de Administração e Atendimento</h4>
+                    <div id="quiz-administracao"></div>
+                    <button class="button-primary mt-4" onclick="submitQuiz('administracao')">Verificar Resposta</button>
+                    <div id="feedback-administracao" class="quiz-feedback"></div>
+                </div>
+            </section>
+
+            <section id="rh">
+                <h2 class="text-2xl font-bold mb-4">3. Noções Essenciais de Recursos Humanos</h2>
+
+                <h3>3.1. Conceito e Evolução de Recursos Humanos</h3>
+                <p class="mb-4">Recursos Humanos (RH) é a área de uma empresa encarregada de gerenciar e desenvolver o capital humano da organização. Suas atribuições abrangem um vasto leque de atividades, desde o recrutamento e seleção de talentos até o engajamento, treinamento e desenvolvimento contínuo, gestão de benefícios, elaboração de planos de carreira e definição de remuneração.</p>
+                <p class="mb-4">A origem do setor de RH remonta ao início do século XX, pós-Revolução Industrial, quando era inicialmente conhecido como "Relações Industriais". Uma tendência contemporânea é a "Agilidade em Recursos Humanos", que envolve a aplicação de metodologias ágeis à gestão de pessoas para tornar os processos mais flexíveis, adaptáveis e centrados no colaborador.</p>
+
+                <h3>3.2. Principais Funções do RH</h3>
+                <div class="card">
+                    <h4 class="text-xl font-semibold mb-2">Organização e Planejamento da Força de Trabalho</h4>
+                    <p>Planejamento estratégico do quadro de funcionários, design de cargos, sistemas de remuneração e promoção.</p>
+                </div>
+                <div class="card">
+                    <h4 class="text-xl font-semibold mb-2">Recrutamento e Seleção</h4>
+                    <p>Identificar e atrair candidatos, aplicar sistemas de seleção, e realizar o onboarding de novos colaboradores.</p>
+                </div>
+                <div class="card">
+                    <h4 class="text-xl font-semibold mb-2">Administração de Pessoal</h4>
+                    <p>Lida com processos legais e administrativos, formalização de contratos, processamento de salários e segurança social.</p>
+                </div>
+                <div class="card">
+                    <h4 class="text-xl font-semibold mb-2">Treinamento e Desenvolvimento</h4>
+                    <p>Promove o desenvolvimento profissional contínuo, estabelecendo planos de carreira e organizando cursos.</p>
+                </div>
+                <div class="card">
+                    <h4 class="text-xl font-semibold mb-2">Avaliação de Desempenho e Controle de Pessoal</h4>
+                    <p>Monitoramento individualizado, supervisão de horas extras, absenteísmo e avaliação de desempenho.</p>
+                </div>
+                <div class="card">
+                    <h4 class="text-xl font-semibold mb-2">Clima Organizacional e Satisfação</h4>
+                    <p>Avalia e monitora a satisfação dos colaboradores, identifica fontes de conflito e analisa decisões de gestão.</p>
+                </div>
+                <div class="card">
+                    <h4 class="text-xl font-semibold mb-2">Relações Trabalhistas</h4>
+                    <p>Promove a comunicação entre gestão e colaboradores, mediando conflitos e facilitando negociações.</p>
+                </div>
+                <div class="card">
+                    <h4 class="text-xl font-semibold mb-2">Prevenção de Riscos Ocupacionais</h4>
+                    <p>Estuda as condições de trabalho para detectar riscos e implementar medidas de prevenção e proteção.</p>
+                </div>
+
+                <h3>3.3. Áreas de Atuação e Habilidades Requeridas</h3>
+                <p class="mb-4">Profissionais de RH possuem um mercado de trabalho amplo e diversificado. Para estagiários em RH, o desenvolvimento de habilidades técnicas (legislação trabalhista, ferramentas específicas) e interpessoais é fundamental.</p>
+                <div class="interactive-element">
+                    <p class="font-semibold">Tendências em RH:</p>
+                    <ul class="list-disc list-inside">
+                        <li><strong>Agilidade em Recursos Humanos:</strong> Processos mais flexíveis e centrados no colaborador.</li>
+                        <li><strong>Tecnologia e Automação:</strong> Automação de processos como recrutamento para eficiência.</li>
+                        <li><strong>People Analytics (Análise de Dados):</strong> Decisões estratégicas e informadas sobre desempenho e comportamento.</li>
+                        <li><strong>Experiência do Colaborador:</strong> Valorização do bem-estar e retenção de talentos.</li>
+                    </ul>
+                </div>
+
+                <div class="quiz-container">
+                    <h4 class="text-xl font-semibold mb-4">Teste Rápido de Recursos Humanos</h4>
+                    <div id="quiz-rh"></div>
+                    <button class="button-primary mt-4" onclick="submitQuiz('rh')">Verificar Resposta</button>
+                    <div id="feedback-rh" class="quiz-feedback"></div>
+                </div>
+            </section>
+
+            <section id="compras-estoque">
+                <h2 class="text-2xl font-bold mb-4">4. Gestão de Compras e Estoque</h2>
+
+                <h3>4.1. Definição e Importância da Gestão de Compras e Estoque</h3>
+                <p class="mb-4">A gestão de compras e estoque é um conjunto de processos essenciais que abrange a aquisição, o armazenamento, a movimentação e a distribuição dos produtos que uma empresa comercializa ou utiliza em sua produção. O principal objetivo é assegurar que a empresa sempre disponha dos produtos corretos, na quantidade exata, no momento oportuno e com o menor custo possível.</p>
+                <p class="mb-4">Essa gestão é de vital importância para o desempenho e a competitividade de uma empresa, impactando diretamente sua lucratividade, produtividade, qualidade e a satisfação do cliente.</p>
+
+                <h3>4.2. Princípios Fundamentais da Gestão de Estoque</h3>
+                <div class="card">
+                    <h4 class="text-xl font-semibold mb-2">Previsão da Demanda</h4>
+                    <p>Estudo aprofundado do mercado para antecipar as demandas futuras, permitindo negociações melhores com fornecedores.</p>
+                </div>
+                <div class="card">
+                    <h4 class="text-xl font-semibold mb-2">Monitoramento do Sistema</h4>
+                    <p>Contagem precisa do estoque, registro de uso ou venda, e reabastecimento necessário, idealmente com softwares de gestão.</p>
+                </div>
+                <div class="card">
+                    <h4 class="text-xl font-semibold mb-2">Qualidade</h4>
+                    <p>Condições de armazenamento dos produtos e materiais para prevenir danos e desperdícios.</p>
+                </div>
+
+                <h3>4.3. Metodologias Comuns de Gestão de Estoque</h3>
+                <div class="accordion-container">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Vendor-Managed Inventory (VMI) - Inventário Gerido pelo Fornecedor <span class="arrow">&#9660;</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Informações sobre o estoque são compartilhadas com um fornecedor externo, que se torna responsável pela quantidade do produto, garantindo que não haja faltas, excessos ou perdas.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Just in Time (JIT) - Estratégia por Demanda <span class="arrow">&#9660;</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Sistema de administração que determina quando um produto deve ser produzido, transportado, comprado ou vendido, minimizando o estoque armazenado.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Economic Order Quantity (EOQ) - Quantidade Econômica de Pedido <span class="arrow">&#9660;</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Modelo mais antigo de gestão de estoque, focado na programação da produção para tornar o pedido econômico, minimizando custos de produção, armazenamento e entrega.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>4.4. Erros Comuns a Evitar e Passos para uma Gestão Eficiente</h3>
+                <div class="interactive-element">
+                    <h4 class="text-xl font-semibold mb-2">Erros Comuns:</h4>
+                    <ul class="list-disc list-inside">
+                        <li><strong>Extremos de Estoque:</strong> Muito cheio (capital parado) ou vazio (risco de perda de vendas).</li>
+                        <li><strong>Monitoramento Inadequado:</strong> Não investir em software eficiente ou usar sistemas "baratos".</li>
+                        <li><strong>Erros Administrativos:</strong> Confusão no pedido de materiais, falta de verificação no recebimento.</li>
+                        <li><strong>Controle de Mercadorias:</strong> Falha no monitoramento de datas de validade e estado de conservação.</li>
+                        </ul>
+                    <h4 class="text-xl font-semibold mb-2 mt-4">Passos para uma Gestão Eficiente:</h4>
+                    <ul class="list-disc list-inside">
+                        <li>Conhecer profundamente os produtos.</li>
+                        <li>Organizar calendário e prazos.</li>
+                        <li>Manter bom relacionamento com fornecedores.</li>
+                        <li>Alavancar a tecnologia (sistemas de gestão).</li>
+                    </ul>
+                </div>
+
+                <div class="quiz-container">
+                    <h4 class="text-xl font-semibold mb-4">Teste Rápido de Compras e Estoque</h4>
+                    <div id="quiz-compras-estoque"></div>
+                    <button class="button-primary mt-4" onclick="submitQuiz('compras-estoque')">Verificar Resposta</button>
+                    <div id="feedback-compras-estoque" class="quiz-feedback"></div>
+                </div>
+            </section>
+
+            <section id="tempo">
+                <h2 class="text-2xl font-bold mb-4">5. Gestão do Tempo para Produtividade</h2>
+
+                <h3>5.1. O Que é Gestão do Tempo e Sua Importância</h3>
+                <p class="mb-4">A gestão do tempo é um conjunto de técnicas e práticas utilizadas para aprimorar a conclusão de tarefas e projetos dentro dos prazos estabelecidos, com foco em produtividade e eficiência. Essencialmente, envolve o processo de organizar e planejar como o tempo será dividido entre diferentes atividades, definindo prioridades, estabelecendo metas claras e utilizando métodos e ferramentas para monitorar e controlar o uso do tempo.</p>
+                <p class="mb-4">É fundamental para aumentar a produtividade, reduzir o estresse, e impacta positivamente o bem-estar do profissional.</p>
+
+                <h3>5.2. Técnicas e Estratégias para Otimizar o Tempo</h3>
+                <div class="accordion-container">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Bom Planejamento <span class="arrow">&#9660;</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Reunir todas as tarefas, classificá-las por importância, definir o que fazer primeiro, estimar o tempo de execução e estabelecer prazos. Começar pelas tarefas mais importantes e urgentes.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Agendamento de Tarefas <span class="arrow">&#9660;</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Registrar compromissos pessoais e profissionais em ferramentas como Google Calendar ou agenda tradicional.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Delegação de Tarefas <span class="arrow">&#9660;</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Delegar tarefas não urgentes e menos importantes para liberar tempo para atividades cruciais e desenvolver outros membros da equipe.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Evitar a Procrastinação <span class="arrow">&#9660;</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Eliminar distrações, definir metas claras, criar listas de tarefas, ser realista com expectativas e aderir ao plano.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Gerenciar Comunicações (E-mail e WhatsApp) <span class="arrow">&#9660;</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Planejar horários específicos para verificar e-mails e mensagens, priorizando respostas para evitar perda de concentração.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Organizar Pausas <span class="arrow">&#9660;</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Incluir pausas estratégicas na programação para aumentar a produtividade e reduzir a fadiga mental e física.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Uso de Tecnologia <span class="arrow">&#9660;</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Utilizar aplicativos de gestão do tempo como Pomodoro Timer, Toggl, Harvest, My Minutes e Rescue Time.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h4 class="text-xl font-semibold mb-2 mt-4">Métodos Específicos de Gestão do Tempo:</h4>
+                <div class="slider-container">
+                    <div class="slider-wrapper" id="tempo-methods-slider">
+                        <div class="slider-slide">
+                            <h5 class="text-lg font-semibold mb-2">Timeboxing</h5>
+                            <p>Completar o trabalho em períodos predefinidos (geralmente não excedendo três horas), dividindo grandes tarefas em partes menores.</p>
+                        </div>
+                        <div class="slider-slide">
+                            <h5 class="text-lg font-semibold mb-2">Time Blocking</h5>
+                            <p>Criação de blocos de tempo definidos no calendário para tarefas relacionadas, minimizando interrupções e permitindo um fluxo de trabalho concentrado.</p>
+                        </div>
+                        <div class="slider-slide">
+                            <h5 class="text-lg font-semibold mb-2">Técnica Pomodoro</h5>
+                            <p>Trabalhar em intervalos curtos (25 minutos) intercalados com pequenas pausas regulares (5 minutos), e uma pausa mais longa (20-30 minutos) após quatro sessões de trabalho.</p>
+                        </div>
+                        <div class="slider-slide">
+                            <h5 class="text-lg font-semibold mb-2">Método Eat the Frog (Engolir o Sapo)</h5>
+                            <p>Realizar a tarefa mais difícil ou importante logo pela manhã, antes de se dedicar a trabalhos menos relevantes ou urgentes.</p>
+                        </div>
+                        <div class="slider-slide">
+                            <h5 class="text-lg font-semibold mb-2">Princípio de Pareto (Regra 80/20)</h5>
+                            <p>Focar nos 20% das tarefas que geram 80% dos resultados, otimizando o esforço e priorizando atividades de alto impacto.</p>
+                        </div>
+                        <div class="slider-slide">
+                            <h5 class="text-lg font-semibold mb-2">Método GTD (Getting Things Done)</h5>
+                            <p>Enfatiza a importância de registrar tudo o que precisa ser feito em uma ferramenta centralizada, liberando a capacidade mental para focar na ação.</p>
+                        </div>
+                    </div>
+                    <div class="slider-nav">
+                        <button onclick="moveSlider('tempo-methods-slider', -1)">Anterior</button>
+                        <button onclick="moveSlider('tempo-methods-slider', 1)">Próximo</button>
+                    </div>
+                </div>
+
+                <div class="quiz-container">
+                    <h4 class="text-xl font-semibold mb-4">Teste Rápido de Gestão do Tempo</h4>
+                    <div id="quiz-tempo"></div>
+                    <button class="button-primary mt-4" onclick="submitQuiz('tempo')">Verificar Resposta</button>
+                    <div id="feedback-tempo" class="quiz-feedback"></div>
+                </div>
+            </section>
+
+            <section id="atualidades">
+                <h2 class="text-2xl font-bold mb-4">6. Conhecimentos Gerais e Atualidades</h2>
+
+                <h3>6.1. A Relevância das Atualidades em Provas</h3>
+                <p class="mb-4">Os conhecimentos gerais e as atualidades são componentes cruciais em concursos públicos e processos seletivos, frequentemente aparecendo em conjunto com conhecimentos específicos da área. A análise dessas questões auxilia na compreensão da profundidade da cobrança da banca examinadora, que pode focar em aspectos políticos, sociais, culturais ou econômicos.</p>
+                <p class="mb-4">Temas comuns abrangem aspectos econômicos, políticos e sociais do Brasil e do mundo, os principais acontecimentos nacionais e regionais, blocos econômicos, eleições, questões energéticas, educação, ciência, tecnologia e inovação, além de tópicos sobre meio ambiente e sustentabilidade. Para o ano de 2025, espera-se que as funcionalidades da Inteligência Artificial (IA), a automação de processos e a relação dessas tecnologias com o mercado de trabalho sejam exploradas com ainda mais intensidade.</p>
+
+                <h3>6.2. Como Estudar e Manter-se Informado sobre Temas Relevantes</h3>
+                <div class="interactive-element">
+                    <h4 class="text-xl font-semibold mb-2">Estratégias de Estudo:</h4>
+                    <ul class="list-disc list-inside">
+                        <li><strong>Materiais Específicos e Resumidos:</strong> Buscar materiais objetivos e neutros.</li>
+                        <li><strong>Consumo de Notícias:</strong> Acompanhar jornais televisivos e outras mídias.</li>
+                        <li><strong>Resolução de Questões e Simulados:</strong> Praticar a aplicação do conteúdo teórico e aprimorar o raciocínio lógico.</li>
+                    </ul>
+                </div>
+                <div class="quiz-container">
+                    <h4 class="text-xl font-semibold mb-4">Teste Rápido de Atualidades</h4>
+                    <div id="quiz-atualidades"></div>
+                    <button class="button-primary mt-4" onclick="submitQuiz('atualidades')">Verificar Resposta</button>
+                    <div id="feedback-atualidades" class="quiz-feedback"></div>
+                </div>
+            </section>
+
+            <section id="informatica">
+                <h2 class="text-2xl font-bold mb-4">7. Informática: Pacote Microsoft Office</h2>
+
+                <h3>7.1. Noções Básicas de Informática</h3>
+                <p class="mb-4">Para o mercado de trabalho e processos seletivos, especialmente em funções administrativas, a facilidade em lidar com tecnologia é uma habilidade essencial. Isso inclui a capacidade de usar computadores, redigir documentos no Word, elaborar planilhas no Excel e utilizar outros softwares e a internet.</p>
+                <p class="mb-4">Os conhecimentos fundamentais em informática abrangem a identificação de periféricos, dispositivos de armazenamento, e conexões. Além disso, é crucial saber usar o sistema operacional Windows e o pacote Microsoft Office 365, bem como organizar arquivos e pastas no Windows.</p>
+
+                <h3>7.2. Principais Funções e Aplicações do Word, Excel e PowerPoint</h3>
+                <div class="accordion-container">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Microsoft Word <span class="arrow">&#9660;</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Projetado para auxiliar na criação de documentos de qualidade profissional, permitindo organizar e redigir textos de maneira eficaz. Funções incluem: Criação e Edição, Formatação, Colaboração e Acessibilidade, e Recursos Adicionais (WordArt, Editor Microsoft).</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Microsoft Excel <span class="arrow">&#9660;</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Ferramenta indispensável para a criação e análise de planilhas eletrônicas. Funções essenciais: SE, MÉDIA, PROCV, SOMA, SOMASE, CONT.SE. Consideradas obrigatórias para testes de emprego.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Microsoft PowerPoint <span class="arrow">&#9660;</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Apresentações de slides para transmitir mensagens ou histórias. Funções: Criação de Apresentações, Recursos Visuais e de Audio, Gravação e Compartilhamento, Anotações do Orador.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz-container">
+                    <h4 class="text-xl font-semibold mb-4">Teste Rápido de Informática</h4>
+                    <div id="quiz-informatica"></div>
+                    <button class="button-primary mt-4" onclick="submitQuiz('informatica')">Verificar Resposta</button>
+                    <div id="feedback-informatica" class="quiz-feedback"></div>
+                </div>
+            </section>
+
+            <section id="matematica">
+                <h2 class="text-2xl font-bold mb-4">8. Matemática Aplicada para Concursos</h2>
+
+                <h3>8.1. Probabilidade: Conceitos e Exemplos</h3>
+                <p class="mb-4">A probabilidade é um ramo da matemática que se dedica a estimar a chance de um determinado evento ocorrer. Essa chance é expressa por números reais no intervalo de 0 a 1, ou em percentuais, onde valores mais próximos de 1 (ou 100%) indicam maior chance de ocorrência.</p>
+                <div class="interactive-element">
+                    <h4 class="text-xl font-semibold mb-2">Conceitos Básicos:</h4>
+                    <ul class="list-disc list-inside">
+                        <li><strong>Experimento Aleatório:</strong> Processo com resultados imprevisíveis (ex: lançamento de moeda).</li>
+                        <li><strong>Espaço Amostral ($\Omega$):</strong> Conjunto de todos os resultados possíveis de um experimento aleatório.</li>
+                        <li><strong>Evento:</strong> Qualquer subconjunto do espaço amostral.</li>
+                    </ul>
+                    <p class="mt-2">Fórmula: $P(E) = \frac{\text{Número de resultados favoráveis}}{\text{Número total de resultados possíveis}}$</p>
+                </div>
+
+                <h3>8.2. Proporção e Porcentagem: Cálculo e Aplicações</h3>
+                <p class="mb-4">Porcentagem significa "por cento" ou "por 100". É uma forma de expressar uma proporção ou uma fração de um todo em relação a 100.</p>
+                <div class="interactive-element">
+                    <h4 class="text-xl font-semibold mb-2">Cálculo:</h4>
+                    <p>Para transformar porcentagem em decimal: dividir por 100 (ex: $25\% = 0,25$).</p>
+                    <p>Para o inverso: multiplicar por 100 e adicionar o símbolo de porcentagem (ex: $0,23 = 23\%$).</p>
+                    <h4 class="text-xl font-semibold mb-2 mt-4">Aplicações:</h4>
+                    <ul class="list-disc list-inside">
+                        <li>Cálculo de aumento ou desconto sobre um valor.</li>
+                        <li>Determinação do valor percentual de um desconto.</li>
+                    </ul>
+                </div>
+
+                <h3>8.3. Regra de Três Simples e Composta: Métodos e Exercícios</h3>
+                <p class="mb-4">A regra de três é uma ferramenta matemática utilizada para resolver problemas que envolvem grandezas proporcionais. Ela se divide em simples e composta.</p>
+                <div class="accordion-container">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Regra de Três Simples <span class="arrow">&#9660;</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Aplicada em problemas com apenas duas grandezas (direta ou inversamente proporcionais). Conhecendo três valores, busca-se um quarto valor desconhecido.</p>
+                            <p>Exemplo: Se 2 operários fazem 10 peças em 1 hora, 4 operários fazem X peças em 1 hora.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Equações do $2^{\circ}$ Grau <span class="arrow">&#9660;</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Equações que podem ser escritas na forma geral $ax^{2}+bx+c=0$, onde 'a', 'b' e 'c' são coeficientes numéricos, com 'a' diferente de zero. A resolução geralmente envolve a aplicação da Fórmula de Bhaskara.</p>
+                            <p>Fórmula de Bhaskara: $x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>8.6. Juros Simples e Raciocínio Lógico: Fundamentos e Problemas</h3>
+                <div class="interactive-element">
+                    <h4 class="text-xl font-semibold mb-2">Juros Simples:</h4>
+                    <p>Juro calculado apenas sobre o capital inicial (principal). <br>Fórmula: $J = C \cdot i \cdot t$ (J = Juro, C = Capital, i = Taxa de juros, t = Tempo)</p>
+                    <p>Montante: $M = C + J$</p>
+                    <h4 class="text-xl font-semibold mb-2 mt-4">Raciocínio Lógico:</h4>
+                    <p>Habilidade de interpretar e resolver problemas, inferir informações, identificar padrões e aplicar conceitos matemáticos de forma estruturada para chegar a uma conclusão válida.</p>
+                </div>
+
+                <div class="quiz-container">
+                    <h4 class="text-xl font-semibold mb-4">Teste Rápido de Matemática</h4>
+                    <div id="quiz-matematica"></div>
+                    <button class="button-primary mt-4" onclick="submitQuiz('matematica')">Verificar Resposta</button>
+                    <div id="feedback-matematica" class="quiz-feedback"></div>
+                </div>
+            </section>
+
+            <section id="portugues">
+                <h2 class="text-2xl font-bold mb-4">9. Português: Gramática e Interpretação de Texto</h2>
+
+                <h3>9.1. Tópicos Essenciais de Gramática</h3>
+                <p class="mb-4">A gramática é a base para uma comunicação clara e correta, sendo um componente fundamental em provas de concurso. O domínio da norma culta da língua portuguesa é essencial para a escrita e compreensão de textos.</p>
+                <div class="interactive-element">
+                    <h4 class="text-xl font-semibold mb-2">Assuntos Frequentes:</h4>
+                    <ul class="list-disc list-inside">
+                        <li>Verbos (conjugação, tempos, modos, vozes)</li>
+                        <li>Pontuação (vírgula, ponto e vírgula, dois pontos, aspas)</li>
+                        <li>Concordância Verbal e Nominal</li>
+                        <li>Regência Verbal e Nominal</li>
+                        <li>Pronomes Relativos</li>
+                        <li>Nexos Oracionais</li>
+                        <li>Linguagem Formal e Informal</li>
+                        <li>Tipologia Textual</li>
+                        <li>Tipos de Sujeito</li>
+                        <li>Crase</li>
+                        <li>Substantivos</li>
+                        <li>Transitividade Verbal</li>
+                    </ul>
+                </div>
+
+                <h3>9.2. Estratégias de Interpretação de Texto para Provas</h3>
+                <p class="mb-4">A interpretação de texto é um dos temas mais cobrados e que mais eliminam candidatos em concursos públicos. Envolve a leitura atenta e a compreensão profunda de textos escritos, indo além do sentido literal para captar as ideias implícitas e a intenção do autor.</p>
+                <div class="interactive-element">
+                    <h4 class="text-xl font-semibold mb-2">Estratégias Essenciais:</h4>
+                    <ul class="list-disc list-inside">
+                        <li>Identificar a Ideia Principal e Secundária.</li>
+                        <li>Desenvolver Técnicas para Questões Objetivas (atenção a palavras-chave).</li>
+                        <li>Aprimorar a Interpretação de Enunciados Longos e Textos Dissertativos.</li>
+                        <li>Compreender o Conceito do "Mais Adequado" na resposta.</li>
+                        <li>Prática Frequente e Controle de Tempo.</li>
+                        <li>Evitar Erros Comuns e Ganhar Tempo.</li>
+                    </ul>
+                </div>
+
+                <div class="quiz-container">
+                    <h4 class="text-xl font-semibold mb-4">Teste Rápido de Português</h4>
+                    <div id="quiz-portugues"></div>
+                    <button class="button-primary mt-4" onclick="submitQuiz('portugues')">Verificar Resposta</button>
+                    <div id="feedback-portugues" class="quiz-feedback"></div>
+                </div>
+            </section>
+
+            <section id="simulados">
+                <h2 class="text-2xl font-bold mb-4">10. Recursos para Prática: Sites de Simulados Online</h2>
+                <p class="mb-4">A resolução de questões e simulados é uma estratégia fundamental para a preparação eficaz em qualquer processo seletivo. Essa prática permite ao candidato aplicar o conteúdo teórico, identificar áreas de maior dificuldade, aprimorar o raciocínio lógico e, crucialmente, desenvolver o controle de tempo durante a prova.</p>
+
+                <h3>10.1. Simulados de Administração e Atendimento ao Cliente</h3>
+                <ul class="list-disc list-inside mb-4">
+                    <li><a href="https://questoes.grancursosonline.com.br/questoes-de-concursos/administracao-geral-caracteristicas-do-atendimento" target="_blank" class="text-blue-600 hover:underline">Gran Cursos Online: Administração Geral e Atendimento</a></li>
+                    <li><a href="https://m.youtube.com/watch?v=PemV640EQz0" target="_blank" class="text-blue-600 hover:underline">Detonando Questões (YouTube): Atendimento ao Público</a></li>
+                </ul>
+
+                <h3>10.2. Simulados de Recursos Humanos, Compras e Estoque</h3>
+                <ul class="list-disc list-inside mb-4">
+                    <li><a href="https://www.questoesestrategicas.com.br/simulados/ver/62333f69d66d5-tecnico-analista-de-recursos-humanossuperior" target="_blank" class="text-blue-600 hover:underline">Questões Estratégicas: Analista de Recursos Humanos</a></li>
+                    <li><a href="https://www.aprovaconcursos.com.br/questoes-de-concurso/disciplina/administraca" target="_blank" class="text-blue-600 hover:underline">Aprova Concursos: Administração de Recursos Materiais</a></li>
+                </ul>
+
+                <h3>10.3. Simulados de Gestão do Tempo, Conhecimentos Gerais e Atualidades</h3>
+                <ul class="list-disc list-inside mb-4">
+                    <li><a href="https://www.qconcursos.com/questoes-de-concursos/disciplinas/historia-atualidades/questoes" target="_blank" class="text-blue-600 hover:underline">Qconcursos.com: Conhecimentos Gerais e Atualidades</a></li>
+                    <li><a href="https://questoes.grancursosonline.com.br/simulados/atualidades-e-conhecimentos-gerais" target="_blank" class="text-blue-600 hover:underline">Gran Cursos Online: Atualidades e Conhecimentos Gerais</a></li>
+                    <li><a href="https://wayground.com/admin/quiz/6657261f93590518ab2d1f09/gestao-do-tempo" target="_blank" class="text-blue-600 hover:underline">Wayground: Quizzes sobre Gestão do Tempo</a></li>
+                </ul>
+
+                <h3>10.4. Simulados de Informática (Microsoft Office)</h3>
+                <ul class="list-disc list-inside mb-4">
+                    <li><a href="https://assessment.multisoftsystems.com/microsoft-office-practice-test" target="_blank" class="text-blue-600 hover:underline">Multisoft Systems: Microsoft Office Practice Test</a></li>
+                    <li><a href="https://www.pciconcursos.com.br/simulados/informatica" target="_blank" class="text-blue-600 hover:underline">PCI Concursos: Informática</a></li>
+                    <li><a href="https://questoes.grancursosonline.com.br/simulados/pacote-microsoft-office" target="_blank" class="text-blue-600 hover:underline">Gran Cursos Online: Pacote Microsoft Office</a></li>
+                </ul>
+
+                <h3>10.5. Simulados de Matemática</h3>
+                <ul class="list-disc list-inside mb-4">
+                    <li><a href="https://jcconcursos.com.br/simulados/simulado-matematica-para-concursos-nivel-medio" target="_blank" class="text-blue-600 hover:underline">JC Concursos: Matemática para Concursos</a></li>
+                    <li><a href="https://questoes.grancursosonline.com.br/simulados" target="_blank" class="text-blue-600 hover:underline">Gran Cursos Online: Simulados de Matemática</a></li>
+                    <li><a href="https://www.qconcursos.com/simulados" target="_blank" class="text-blue-600 hover:underline">Qconcursos.com: Simulados de Matemática</a></li>
+                </ul>
+
+                <h3>10.6. Simulados de Português (Gramática e Interpretação de Texto)</h3>
+                <ul class="list-disc list-inside mb-4">
+                    <li><a href="https://www.todamateria.com.br/exercicios/exercicios-de-portugues/" target="_blank" class="text-blue-600 hover:underline">Toda Matéria: Exercícios de Português</a></li>
+                    <li><a href="https://www.pravaler.com.br/pra-testar/exercicios/simulado-de-portugues/" target="_blank" class="text-blue-600 hover:underline">Pravaler: Simulado de Português</a></li>
+                    <li><a href="https://jcconcursos.uol.com.br/simulados/simulado-de-portugues-gramatica-para-concursos-nivel-medio" target="_blank" class="text-blue-600 hover:underline">JC Concursos: Gramática para Concursos</a></li>
+                </ul>
+            </section>
+        </main>
+
+        <footer class="text-center text-gray-600 text-sm mt-10 pb-5">
+            <p>&copy; 2025 Guia Preparatório Completo. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <!-- Modal para "Comece a Estudar Agora" -->
+    <div id="welcome-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('welcome-modal')">&times;</span>
+            <h3 class="text-2xl font-bold mb-4">Bem-vindo(a) ao seu Guia de Estudos!</h3>
+            <p class="mb-6">Este site foi criado para te ajudar a se preparar para concursos e processos seletivos. Explore as seções e aproveite os recursos interativos!</p>
+            <button class="button-primary" onclick="closeModal('welcome-modal')">Começar!</button>
+        </div>
+    </div>
+
+    <script>
+        // Função para rolagem suave
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Lógica do Modal
+        const welcomeModal = document.getElementById('welcome-modal');
+        const startStudyingBtn = document.getElementById('start-studying-btn');
+
+        startStudyingBtn.addEventListener('click', () => {
+            openModal('welcome-modal');
+        });
+
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Fechar modal clicando fora
+        window.addEventListener('click', (event) => {
+            if (event.target === welcomeModal) {
+                closeModal('welcome-modal');
+            }
+        });
+
+        // Lógica do Acordeão
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const arrow = header.querySelector('.arrow');
+
+                // Fechar outros acordeões abertos
+                document.querySelectorAll('.accordion-content.active').forEach(openContent => {
+                    if (openContent !== content) {
+                        openContent.classList.remove('active');
+                        openContent.style.maxHeight = '0';
+                        openContent.previousElementSibling.querySelector('.arrow').innerHTML = '&#9660;'; // Seta para baixo
+                    }
+                });
+
+                // Abrir/Fechar o acordeão clicado
+                content.classList.toggle('active');
+                if (content.classList.contains('active')) {
+                    // Define a altura máxima para o scrollHeight real do conteúdo para uma transição suave
+                    // Adicionado um pequeno buffer de 20px para garantir que o texto não seja cortado
+                    content.style.maxHeight = (content.scrollHeight + 20) + "px";
+                    arrow.innerHTML = '&#9650;'; // Seta para cima
+                } else {
+                    content.style.maxHeight = '0';
+                    arrow.innerHTML = '&#9660;'; // Seta para baixo
+                }
+            });
+        });
+
+        // Lógica do Slider
+        const sliders = {}; // Armazena o estado de cada slider
+
+        function initializeSlider(sliderId) {
+            const sliderWrapper = document.getElementById(sliderId);
+            if (!sliderWrapper) return;
+
+            const slides = sliderWrapper.querySelectorAll('.slider-slide');
+            sliders[sliderId] = {
+                wrapper: sliderWrapper,
+                slides: slides,
+                currentIndex: 0,
+                totalSlides: slides.length
+            };
+            updateSlider(sliderId);
+        }
+
+        function updateSlider(sliderId) {
+            const slider = sliders[sliderId];
+            if (!slider) return;
+            const offset = -slider.currentIndex * 100;
+            slider.wrapper.style.transform = `translateX(${offset}%)`;
+        }
+
+        function moveSlider(sliderId, direction) {
+            const slider = sliders[sliderId];
+            if (!slider) return;
+
+            slider.currentIndex += direction;
+            if (slider.currentIndex < 0) {
+                slider.currentIndex = slider.totalSlides - 1;
+            } else if (slider.currentIndex >= slider.totalSlides) {
+                slider.currentIndex = 0;
+            }
+            updateSlider(sliderId);
+        }
+
+        // Inicializar sliders ao carregar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeSlider('podc-slider');
+            initializeSlider('tempo-methods-slider');
+        });
+
+        // Lógica do Quiz
+        const quizzes = {
+            atualidades: {
+                question: "Qual tecnologia é esperada para ser explorada com ainda mais intensidade em 2025, de acordo com o texto?",
+                options: [
+                    "Realidade Virtual",
+                    "Inteligência Artificial (IA)",
+                    "Blockchain",
+                    "Computação Quântica"
+                ],
+                answer: "Inteligência Artificial (IA)"
+            },
+            administracao: {
+                question: "Qual das funções administrativas se refere à condução e motivação das equipes?",
+                options: [
+                    "Planejamento",
+                    "Organização",
+                    "Direção (ou Liderança)",
+                    "Controle"
+                ],
+                answer: "Direção (ou Liderança)"
+            },
+            rh: {
+                question: "Qual o nome da tendência contemporânea em RH que envolve a aplicação de metodologias ágeis à gestão de pessoas?",
+                options: [
+                    "RH Tradicional",
+                    "Relações Industriais",
+                    "Agilidade em Recursos Humanos",
+                    "Gestão de Pessoal Clássica"
+                ],
+                answer: "Agilidade em Recursos Humanos"
+            },
+            "compras-estoque": {
+                question: "Qual metodologia de gestão de estoque minimiza o estoque armazenado e é ideal para produção programada?",
+                options: [
+                    "Vendor-Managed Inventory (VMI)",
+                    "Just in Time (JIT)",
+                    "Economic Order Quantity (EOQ)",
+                    "FIFO (First-In, First-Out)"
+                ],
+                answer: "Just in Time (JIT)"
+            },
+            tempo: {
+                question: "Qual técnica de gestão do tempo consiste em trabalhar em intervalos curtos (25 minutos) intercalados com pequenas pausas?",
+                options: [
+                    "Timeboxing",
+                    "Time Blocking",
+                    "Técnica Pomodoro",
+                    "Método GTD"
+                ],
+                answer: "Técnica Pomodoro"
+            },
+            informatica: {
+                question: "Qual função do Microsoft Excel é utilizada para buscar valores em tabelas ou intervalos de dados?",
+                options: [
+                    "SOMA",
+                    "MÉDIA",
+                    "SE",
+                    "PROCV"
+                ],
+                answer: "PROCV"
+            },
+            matematica: {
+                question: "Em probabilidade, o que representa o conjunto de todos os resultados possíveis de um experimento aleatório?",
+                options: [
+                    "Evento",
+                    "Experimento Aleatório",
+                    "Espaço Amostral",
+                    "Variável Aleatória"
+                ],
+                answer: "Espaço Amostral"
+            },
+            portugues: {
+                question: "Qual é a estratégia de interpretação de texto que foca em extrair a mensagem central e as informações que a complementam?",
+                options: [
+                    "Análise Sintática",
+                    "Identificar a Ideia Principal e Secundária",
+                    "Decodificação de Palavras-Chave",
+                    "Revisão Gramatical"
+                ],
+                answer: "Identificar a Ideia Principal e Secundária"
+            }
+        };
+
+        function loadQuiz(quizId) {
+            const quizContainer = document.getElementById(`quiz-${quizId}`);
+            const quizData = quizzes[quizId];
+
+            if (quizContainer && quizData) {
+                let html = `<div class="quiz-question">${quizData.question}</div><div class="quiz-options">`;
+                quizData.options.forEach((option, index) => {
+                    html += `<label><input type="radio" name="${quizId}-question" value="${option}"> ${option}</label>`;
+                });
+                html += `</div>`;
+                quizContainer.innerHTML = html;
+            }
+        }
+
+        function submitQuiz(quizId) {
+            const quizData = quizzes[quizId];
+            const feedbackElement = document.getElementById(`feedback-${quizId}`);
+            const selectedOption = document.querySelector(`input[name="${quizId}-question"]:checked`);
+
+            if (selectedOption) {
+                if (selectedOption.value === quizData.answer) {
+                    feedbackElement.textContent = "Correto! 🎉";
+                    feedbackElement.className = "quiz-feedback correct";
+                } else {
+                    feedbackElement.textContent = `Incorreto. A resposta correta é: ${quizData.answer}`;
+                    feedbackElement.className = "quiz-feedback incorrect";
+                }
+            } else {
+                feedbackElement.textContent = "Por favor, selecione uma opção.";
+                feedbackElement.className = "quiz-feedback";
+            }
+        }
+
+        // Carregar quizzes ao carregar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            for (const quizId in quizzes) {
+                loadQuiz(quizId);
+            }
+        });
+
+    </script>
 </body>
-
 </html>
