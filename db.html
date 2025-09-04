@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Códigos de Apoio SQL</title>
+    <!-- Inclui o Tailwind CSS para estilização -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilo para a fonte "Inter" */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Estilo para garantir que o pre e code preservem a formatação do SQL */
+        pre {
+            white-space: pre-wrap; /* Quebra de linha para conteúdo longo */
+            word-wrap: break-word; /* Quebra de palavras */
+        }
+        code {
+            display: block; /* Garante que o código ocupe toda a largura */
+            overflow-x: auto; /* Adiciona scroll horizontal se o código for muito longo */
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-purple-100 to-blue-100 min-h-screen flex flex-col">
+    <!-- Cabeçalho da página -->
+    <header class="bg-gradient-to-r from-purple-700 to-indigo-700 text-white p-6 shadow-lg rounded-b-xl">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <h1 class="text-3xl font-extrabold mb-2 md:mb-0">Códigos de Apoio para Questões</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="#" class="hover:text-purple-200 transition duration-300 text-lg">Início</a></li>
+                    <li><a href="#" class="hover:text-purple-200 transition duration-300 text-lg">SQL</a></li>
+                    <li><a href="#" class="hover:text-purple-200 transition duration-300 text-lg">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <main class="flex-grow container mx-auto p-4 md:p-8">
+        <section class="bg-white rounded-2xl shadow-xl p-6 md:p-10 mb-8 transform hover:scale-105 transition duration-300">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-purple-400 pb-2">Estrutura de Banco de Dados SQL</h2>
+            <p class="text-gray-700 text-lg mb-6 leading-relaxed">
+            </p>
+
+            <!-- Área para exibir o código SQL -->
+            <div class="bg-gray-800 text-gray-200 p-5 rounded-lg shadow-inner overflow-hidden">
+                <pre class="text-sm md:text-base font-mono leading-relaxed"><code id="sql-code">
+-- ==========================
+-- DROP TABELAS (se existirem)
+-- ==========================
+DROP TABLE IF EXISTS trabalha_em;
+DROP TABLE IF EXISTS projeto;
+DROP TABLE IF EXISTS dependente;
+DROP TABLE IF EXISTS funcionario;
+DROP TABLE IF EXISTS departamento;
+
+-- ==========================
+-- CREATE TABELAS
+-- ==========================
+CREATE TABLE departamento (
+    numero_departamento INT PRIMARY KEY,
+    nome_departamento VARCHAR(100),
+    cpf_gerente CHAR(11)
+);
+
+CREATE TABLE funcionario (
+    cpf CHAR(11) PRIMARY KEY,
+    primeiro_nome VARCHAR(50),
+    ultimo_nome VARCHAR(50),
+    sexo CHAR(1),
+    data_nascimento DATE,
+    salario DECIMAL(10,2),
+    cpf_supervisor CHAR(11),
+    numero_departamento INT,
+    FOREIGN KEY (numero_departamento) REFERENCES departamento(numero_departamento),
+    FOREIGN KEY (cpf_supervisor) REFERENCES funcionario(cpf)
+);
+
+CREATE TABLE dependente (
+    id SERIAL PRIMARY KEY,
+    nome_dependente VARCHAR(100),
+    cpf_funcionario CHAR(11),
+    FOREIGN KEY (cpf_funcionario) REFERENCES funcionario(cpf)
+);
+
+CREATE TABLE projeto (
+    numero_projeto INT PRIMARY KEY,
+    nome_projeto VARCHAR(100),
+    numero_departamento INT,
+    FOREIGN KEY (numero_departamento) REFERENCES departamento(numero_departamento)
+);
+
+CREATE TABLE trabalha_em (
+    cpf_funcionario CHAR(11),
+    numero_projeto INT,
+    horas_semana INT,
+    FOREIGN KEY (cpf_funcionario) REFERENCES funcionario(cpf),
+    FOREIGN KEY (numero_projeto) REFERENCES projeto(numero_projeto)
+);
+
+-- ==========================
+-- POPULANDO DEPARTAMENTO 
+-- ==========================
+INSERT INTO departamento (numero_departamento, nome_departamento, cpf_gerente) VALUES
+(1, 'Recursos Humanos', '10000000001'),
+(2, 'Tecnologia', '10000000002'),
+(3, 'Financeiro', '10000000003'),
+(4, 'Marketing', '10000000004'),
+(5, 'Jurídico', '10000000005'),
+(6, 'Comercial', '10000000006'),
+(7, 'Logística', '10000000007'),
+(8, 'Operações', '10000000008'),
+(9, 'Compras', '10000000009'),
+(10, 'Atendimento', '10000000010'),
+(11, 'Auditoria', '10000000011'),
+(12, 'Treinamento', '10000000012'),
+(13, 'Pesquisa', '10000000013'),
+(14, 'Inovação', '10000000014'),
+(15, 'Projetos Especiais', '10000000015'),
+(16, 'Produção', '10000000016'),
+(17, 'Qualidade', '10000000017'),
+(18, 'Gestão de Dados', '10000000018'),
+(19, 'Planejamento', '10000000019'),
+(20, 'Expansão Internacional', '10000000020');
+
+-- ==========================
+-- POPULANDO FUNCIONARIO 
+-- ==========================
+
+INSERT INTO funcionario (cpf, primeiro_nome, ultimo_nome, sexo, data_nascimento, salario, cpf_supervisor, numero_departamento) VALUES
+('10000000001', 'Ana', 'Silva', 'F', '1980-05-15', 8000.00, NULL, 1),
+('10000000002', 'Carlos', 'Souza', 'M', '1978-09-20', 12000.00, NULL, 2),
+('10000000003', 'Paula', 'Lima', 'F', '1985-01-10', 10000.00, NULL, 3),
+('10000000004', 'Marcos', 'Ferreira', 'M', '1982-07-19', 9500.00, NULL, 4),
+('10000000005', 'Julia', 'Mendes', 'F', '1988-12-01', 8700.00, NULL, 5),
+('10000000006', 'Roberto', 'Alves', 'M', '1987-03-05', 9100.00, NULL, 6),
+('10000000007', 'Fernanda', 'Pereira', 'F', '1990-06-21', 8900.00, NULL, 7),
+('10000000008', 'Diego', 'Santos', 'M', '1984-09-09', 8800.00, NULL, 8),
+('10000000009', 'Marina', 'Castro', 'F', '1986-10-30', 9300.00, NULL, 9),
+('10000000010', 'Luiz', 'Ribeiro', 'M', '1991-02-15', 8600.00, NULL, 10),
+('10000000011', 'Ricardo', 'Barbosa', 'M', '1989-08-22', 9400.00, NULL, 11),
+('10000000012', 'Tatiane', 'Costa', 'F', '1993-04-18', 8700.00, NULL, 12),
+('10000000013', 'Rodrigo', 'Machado', 'M', '1981-01-14', 9600.00, NULL, 13),
+('10000000014', 'Sofia', 'Fernandes', 'F', '1984-11-03', 8500.00, NULL, 14),
+('10000000015', 'Daniel', 'Gomes', 'M', '1982-07-11', 8900.00, NULL, 15),
+('10000000016', 'Patricia', 'Rocha', 'F', '1990-03-07', 8700.00, NULL, 16),
+('10000000017', 'Thiago', 'Martins', 'M', '1985-09-25', 9200.00, NULL, 17),
+('10000000018', 'Isabela', 'Araújo', 'F', '1991-12-19', 8900.00, NULL, 18),
+('10000000019', 'Gustavo', 'Oliveira', 'M', '1983-02-28', 9700.00, NULL, 19),
+('10000000020', 'Camila', 'Teixeira', 'F', '1987-06-16', 9400.00, NULL, 20),
+
+('10000000021', 'Bruno', 'Lopes', 'M', '1992-01-01', 5000.00, '10000000001', 1),
+('10000000022', 'Vanessa', 'Almeida', 'F', '1993-02-02', 5200.00, '10000000002', 2),
+('10000000023', 'Igor', 'Cardoso', 'M', '1994-03-03', 4800.00, '10000000003', 3),
+('10000000024', 'Larissa', 'Moura', 'F', '1990-04-04', 4600.00, '10000000004', 4),
+('10000000025', 'Fábio', 'Nunes', 'M', '1989-05-05', 4700.00, '10000000005', 5),
+('10000000026', 'Aline', 'Teodoro', 'F', '1991-06-06', 4900.00, '10000000006', 6),
+('10000000027', 'Gustavo', 'Reis', 'M', '1992-07-07', 5000.00, '10000000007', 7),
+('10000000028', 'Priscila', 'Vieira', 'F', '1993-08-08', 4800.00, '10000000008', 8),
+('10000000029', 'Marcelo', 'Farias', 'M', '1990-09-09', 4700.00, '10000000009', 9),
+('10000000030', 'Renata', 'Melo', 'F', '1991-10-10', 4600.00, '10000000010', 10);
+
+-- ==========================
+-- POPULANDO DEPENDENTE 
+-- ==========================
+INSERT INTO dependente (nome_dependente, cpf_funcionario) VALUES
+('Pedro', '10000000021'),
+('Lucas', '10000000022'),
+('Clara', '10000000023'),
+('Juliana', '10000000024'),
+('Rafael', '10000000025'),
+('Gabriela', '10000000026'),
+('Felipe', '10000000027'),
+('Mariana', '10000000028'),
+('Caio', '10000000029'),
+('Lara', '10000000030'),
+('Enzo', '10000000021'),
+('Beatriz', '10000000022'),
+('Hugo', '10000000023'),
+('Laura', '10000000024'),
+('Vitor', '10000000025'),
+('Alice', '10000000026'),
+('Otávio', '10000000027'),
+('Helena', '10000000028'),
+('Mateus', '10000000029'),
+('Sofia', '10000000030'),
+('Sofia', '10000000001'), 
+('Lucas', '10000000002'), 
+('Clara', '10000000003'), 
+('Mateus', '10000000004');
+
+-- ==========================
+-- POPULANDO PROJETO 
+-- ==========================
+INSERT INTO projeto (numero_projeto, nome_projeto, numero_departamento) VALUES
+(101, 'Sistema RH Online', 1),
+(102, 'Plataforma Cloud', 2),
+(103, 'Auditoria Financeira', 3),
+(104, 'Campanha Marketing 2025', 4),
+(105, 'Compliance Legal', 5),
+(106, 'Expansão Vendas', 6),
+(107, 'Cadeia Logística Verde', 7),
+(108, 'Automação Operacional', 8),
+(109, 'Otimização Compras', 9),
+(110, 'App Atendimento', 10),
+(111, 'Controle Interno', 11),
+(112, 'Academia Corporativa', 12),
+(113, 'Pesquisa Científica', 13),
+(114, 'Laboratório Inovação', 14),
+(115, 'Projeto Estratégico A', 15),
+(116, 'Fábrica 4.0', 16),
+(117, 'ISO 9001', 17),
+(118, 'Big Data Analytics', 18),
+(119, 'Plano Estratégico 2030', 19),
+(120, 'Internacionalização', 20);
+
+-- ==========================
+-- POPULANDO TRABALHA_EM 
+-- ==========================
+INSERT INTO trabalha_em (cpf_funcionario, numero_projeto, horas_semana) VALUES
+('10000000021', 101, 20),
+('10000000022', 102, 25),
+('10000000023', 103, 30),
+('10000000024', 104, 15),
+('10000000025', 105, 20),
+('10000000026', 106, 25),
+('10000000027', 107, 30),
+('10000000028', 108, 18),
+('10000000029', 109, 22),
+('10000000030', 110, 20),
+('10000000001', 101, 15),
+('10000000002', 102, 18),
+('10000000003', 103, 20),
+('10000000004', 104, 17),
+('10000000005', 105, 19),
+('10000000006', 106, 21),
+('10000000007', 107, 16),
+('10000000008', 108, 22),
+('10000000009', 109, 20),
+('10000000010', 110, 18),
+('10000000021', 101, 10),
+('10000000021', 102, 12),
+('10000000021', 103, 8),
+('10000000022', 102, 10),
+('10000000022', 104, 15),
+('10000000022', 105, 5),
+('10000000022', 106, 8),
+('10000000023', 103, 12),
+('10000000023', 107, 10),
+('10000000023', 108, 8);
+
+
+
+                </code></pre>
+            </div>
+            
+            <!-- Botão para copiar o código -->
+            <div class="flex justify-center mt-6">
+                <button id="copy-button-sql" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75">
+                    Copiar Código
+                </button>
+            </div>
+
+            <!-- Mensagem de cópia -->
+            <div id="copy-message-sql" class="hidden text-center mt-4 text-green-600 font-semibold">
+                Código copiado para a área de transferência!
+            </div>
+        </section>
+
+       
+    </main>
+
+    <!-- Rodapé da página -->
+    <footer class="bg-gray-800 text-white p-6 text-center rounded-t-xl mt-8">
+        <p>&copy; 2025 Códigos de Apoio. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Lógica para copiar o código SQL principal para a área de transferência
+        document.getElementById('copy-button-sql').addEventListener('click', function() {
+            const sqlCode = document.getElementById('sql-code').textContent;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = sqlCode.trim(); // Remove espaços em branco extras no início/fim
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            // Mostra a mensagem de sucesso
+            const copyMessage = document.getElementById('copy-message-sql');
+            copyMessage.classList.remove('hidden');
+            setTimeout(() => {
+                copyMessage.classList.add('hidden');
+            }, 3000); // Esconde a mensagem após 3 segundos
+        });
+
+        // Lógica para copiar o código do placeholder para a área de transferência
+        document.getElementById('copy-button-placeholder').addEventListener('click', function() {
+            const placeholderCode = document.getElementById('placeholder-code').textContent;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = placeholderCode.trim(); // Remove espaços em branco extras no início/fim
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            // Mostra a mensagem de sucesso
+            const copyMessage = document.getElementById('copy-message-placeholder');
+            copyMessage.classList.remove('hidden');
+            setTimeout(() => {
+                copyMessage.classList.add('hidden');
+            }, 3000); // Esconde a mensagem após 3 segundos
+        });
+    </script>
+</body>
+</html>
