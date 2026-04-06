@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🐑 Regras da Ovelinha 🖤</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0d0b12;
+    --dark: #120f1a;
+    --purple: #5b1e8c;
+    --lilac: #a855f7;
+    --pink: #c026d3;
+    --rose: #e879a0;
+    --bone: #e8dff5;
+    --green: #7c3aed;
+    --soft-green: #2e1065;
+    --yellow: #d946ef;
+    --white: #f5f0ff;
+    --card-bg: rgba(255,255,255,0.05);
+    --border: rgba(168,85,247,0.18);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: radial-gradient(ellipse at top, #1a0a2e 0%, #0d0b12 50%, #0a0a0f 100%);
+    min-height: 100vh;
+    font-family: 'Nunito', sans-serif;
+    color: #e8dff5;
+    overflow-x: hidden;
+  }
+
+  /* Wool texture + stars background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1.5px 1.5px at 8% 15%, rgba(168,85,247,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 25% 55%, rgba(255,255,255,0.35) 0%, transparent 100%),
+      radial-gradient(2px 2px at 45% 8%, rgba(168,85,247,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 65% 75%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 85% 35%, rgba(192,38,211,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 18% 88%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(2px 2px at 55% 45%, rgba(168,85,247,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 78% 12%, rgba(255,255,255,0.45) 0%, transparent 100%),
+      radial-gradient(1px 1px at 38% 30%, rgba(168,85,247,0.4) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 92% 65%, rgba(192,38,211,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 12% 45%, rgba(255,255,255,0.25) 0%, transparent 100%),
+      radial-gradient(1px 1px at 70% 92%, rgba(168,85,247,0.35) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 20px 16px 60px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* HEADER */
+  header {
+    text-align: center;
+    padding: 40px 20px 30px;
+    position: relative;
+  }
+
+  .sheep-left, .sheep-right {
+    position: absolute;
+    font-size: 2.5rem;
+    top: 30px;
+    animation: bounce 2s ease-in-out infinite;
+  }
+  .sheep-left { left: 0; animation-delay: 0.3s; }
+  .sheep-right { right: 0; animation-delay: 0.6s; }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  header h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2.2rem;
+    background: linear-gradient(90deg, #e879a0, #a855f7, #7c3aed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  header p {
+    color: rgba(232,223,245,0.55);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .heart-divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+    justify-content: center;
+  }
+  .heart-divider span { font-size: 1.2rem; animation: pulse 1.5s ease-in-out infinite; }
+  .heart-divider span:nth-child(2) { animation-delay: 0.3s; }
+  .heart-divider span:nth-child(3) { animation-delay: 0.6s; }
+  @keyframes pulse { 0%,100%{transform:scale(1)}50%{transform:scale(1.3)} }
+
+  /* NAV TABS */
+  .tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  .tab-btn {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    color: rgba(232,223,245,0.65);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    backdrop-filter: blur(10px);
+  }
+
+  .tab-btn:hover { color: #e8dff5; border-color: var(--lilac); }
+  .tab-btn.active {
+    background: linear-gradient(135deg, #5b1e8c, #c026d3);
+    border-color: transparent;
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(168, 50, 200, 0.45);
+  }
+
+  /* SECTIONS */
+  .section { display: none; }
+  .section.active { display: block; animation: fadeIn 0.4s ease; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+
+  /* CARDS */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 16px;
+    backdrop-filter: blur(12px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: -1px; right: -1px;
+    height: 2px;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .card.pink::before { background: linear-gradient(90deg, #e879a0, #a855f7); }
+  .card.green::before { background: linear-gradient(90deg, #7c3aed, #5b1e8c); }
+  .card.yellow::before { background: linear-gradient(90deg, #d946ef, #a855f7); }
+  .card.purple::before { background: linear-gradient(90deg, #a855f7, #6d28d9); }
+  .card.red::before { background: linear-gradient(90deg, #c026d3, #7c3aed); }
+
+  .card-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.15rem;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .card-title .icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .icon.pink { background: rgba(232,121,160,0.18); }
+  .icon.green { background: rgba(124,58,237,0.2); }
+  .icon.yellow { background: rgba(217,70,239,0.18); }
+  .icon.purple { background: rgba(168,85,247,0.18); }
+  .icon.red { background: rgba(192,38,211,0.18); }
+
+  /* ITEMS */
+  .item-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+
+  .item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 12px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.06);
+    font-size: 0.92rem;
+    line-height: 1.4;
+    transition: background 0.2s;
+  }
+
+  .item:hover { background: rgba(255,255,255,0.08); }
+  .item .emoji { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+  .item .text { color: rgba(232,223,245,0.88); }
+  .item .text strong { color: #e8dff5; }
+
+  /* DAY BADGE */
+  .day-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, rgba(91,30,140,0.45), rgba(192,38,211,0.25));
+    border: 1px solid rgba(168,85,247,0.28);
+    border-radius: 50px;
+    padding: 4px 14px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--lilac);
+    margin-bottom: 12px;
+  }
+
+  /* SECTION TITLE */
+  .section-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #e879a0, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* RULE CHIP */
+  .rule-chip {
+    display: inline-block;
+    background: rgba(168,85,247,0.12);
+    border: 1px solid rgba(168,85,247,0.22);
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 0.85rem;
+    color: rgba(232,223,245,0.82);
+    margin: 3px;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    margin-top: 40px;
+    color: rgba(232,223,245,0.28);
+    font-size: 0.8rem;
+    padding-bottom: 20px;
+  }
+
+  footer .hearts { font-size: 1rem; margin-bottom: 4px; }
+
+  /* FLOATING DINOS */
+  .floaters {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+    height: 80px;
+  }
+
+  .floater {
+    position: absolute;
+    bottom: 10px;
+    font-size: 1.8rem;
+    animation: float-across linear infinite;
+    opacity: 0.15;
+  }
+
+  @keyframes float-across {
+    from { transform: translateX(-100px); }
+    to { transform: translateX(calc(100vw + 100px)); }
+  }
+
+  /* SCROLL */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(168,85,247,0.45); border-radius: 10px; }
+
+  /* KUROMI decoration */
+  .kuromi-decor {
+    text-align: center;
+    font-size: 2rem;
+    margin: 10px 0;
+    opacity: 0.8;
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 50px;
+    font-weight: 700;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .tag.optional { background: rgba(74,222,128,0.2); color: #4ade80; }
+  .tag.bonus { background: rgba(251,191,36,0.2); color: #fbbf24; }
+  .tag.heavy { background: rgba(248,113,113,0.2); color: #f87171; }
+
+  @media (max-width: 400px) {
+    header h1 { font-size: 1.8rem; }
+    .dino-left, .dino-right { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="sheep-left">🐑</div>
+    <div class="sheep-right">🦖</div>
+
+    <!-- Goth SVG Sheep + Dino duo -->
+    <div style="margin-bottom:8px;display:flex;align-items:flex-end;justify-content:center;gap:6px;">
+      <svg width="90" height="90" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- wool body -->
+        <ellipse cx="45" cy="52" rx="28" ry="22" fill="#2a1040"/>
+        <circle cx="25" cy="48" r="10" fill="#1e0a30"/>
+        <circle cx="32" cy="40" r="11" fill="#1e0a30"/>
+        <circle cx="45" cy="38" r="12" fill="#1e0a30"/>
+        <circle cx="58" cy="40" r="11" fill="#1e0a30"/>
+        <circle cx="65" cy="48" r="10" fill="#1e0a30"/>
+        <circle cx="55" cy="55" r="9" fill="#1e0a30"/>
+        <circle cx="35" cy="55" r="9" fill="#1e0a30"/>
+        <circle cx="45" cy="58" r="9" fill="#1e0a30"/>
+        <circle cx="25" cy="47" r="7" fill="#3d1560"/>
+        <circle cx="45" cy="36" r="9" fill="#3d1560"/>
+        <circle cx="65" cy="47" r="7" fill="#3d1560"/>
+        <!-- face -->
+        <ellipse cx="45" cy="30" rx="14" ry="13" fill="#0d0b12"/>
+        <ellipse cx="45" cy="31" rx="12" ry="11" fill="#1a1025"/>
+        <!-- eyes -->
+        <ellipse cx="40" cy="28" rx="3.5" ry="4" fill="#a855f7"/>
+        <ellipse cx="50" cy="28" rx="3.5" ry="4" fill="#a855f7"/>
+        <ellipse cx="40" cy="28" rx="2" ry="2.5" fill="#0d0b12"/>
+        <ellipse cx="50" cy="28" rx="2" ry="2.5" fill="#0d0b12"/>
+        <ellipse cx="40" cy="28" rx="3.5" ry="4" fill="none" stroke="#d946ef" stroke-width="0.5" opacity="0.6"/>
+        <ellipse cx="50" cy="28" rx="3.5" ry="4" fill="none" stroke="#d946ef" stroke-width="0.5" opacity="0.6"/>
+        <!-- blush -->
+        <ellipse cx="36" cy="33" rx="4" ry="2.5" fill="#c026d3" opacity="0.3"/>
+        <ellipse cx="54" cy="33" rx="4" ry="2.5" fill="#c026d3" opacity="0.3"/>
+        <!-- snout -->
+        <ellipse cx="45" cy="34" rx="4" ry="2.5" fill="#0d0b12"/>
+        <!-- horns -->
+        <path d="M37 19 Q34 12 38 10" stroke="#6d28d9" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <path d="M53 19 Q56 12 52 10" stroke="#6d28d9" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <!-- legs -->
+        <rect x="33" y="70" width="6" height="14" rx="3" fill="#0d0b12"/>
+        <rect x="51" y="70" width="6" height="14" rx="3" fill="#0d0b12"/>
+        <!-- bow -->
+        <path d="M42 22 Q45 20 48 22 Q45 24 42 22Z" fill="#d946ef"/>
+      </svg>
+
+      <!-- tiny goth dino -->
+      <svg width="54" height="70" viewBox="0 0 54 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- body -->
+        <ellipse cx="26" cy="46" rx="16" ry="18" fill="#1e0a30"/>
+        <!-- neck -->
+        <rect x="22" y="22" width="10" height="18" rx="5" fill="#1e0a30"/>
+        <!-- head -->
+        <ellipse cx="30" cy="18" rx="13" ry="10" fill="#1e0a30"/>
+        <!-- snout -->
+        <ellipse cx="40" cy="20" rx="6" ry="5" fill="#2a1040"/>
+        <!-- eye -->
+        <ellipse cx="32" cy="14" rx="3" ry="3.5" fill="#a855f7"/>
+        <ellipse cx="32" cy="14" rx="1.5" ry="2" fill="#0d0b12"/>
+        <ellipse cx="32" cy="14" rx="3" ry="3.5" fill="none" stroke="#d946ef" stroke-width="0.5" opacity="0.7"/>
+        <!-- nostril -->
+        <circle cx="42" cy="19" r="1" fill="#3d1560"/>
+        <!-- spines on back -->
+        <polygon points="14,30 10,22 18,28" fill="#6d28d9"/>
+        <polygon points="12,38 7,30 16,36" fill="#5b1e8c"/>
+        <polygon points="13,45 8,38 17,43" fill="#6d28d9"/>
+        <!-- tiny arm -->
+        <path d="M32 38 Q38 36 36 42" stroke="#2a1040" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <!-- legs -->
+        <rect x="16" y="60" width="7" height="10" rx="3.5" fill="#0d0b12"/>
+        <rect x="28" y="60" width="7" height="10" rx="3.5" fill="#0d0b12"/>
+        <!-- tail -->
+        <path d="M10 50 Q0 55 4 62" stroke="#1e0a30" stroke-width="5" stroke-linecap="round" fill="none"/>
+        <!-- tiny bow -->
+        <path d="M28 10 Q31 8 34 10 Q31 12 28 10Z" fill="#d946ef"/>
+      </svg>
+    </div>
+
+    <h1>Regras da Ovelinha</h1>
+    <p>Com muito amor do Papai 🖤</p>
+    <div class="heart-divider">
+      <span>🐑</span><span>🖤</span><span>🦖</span>
+    </div>
+  </header>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showSection('regras')">📜 Regras</button>
+    <button class="tab-btn" onclick="showSection('tarefas')">✅ Tarefas</button>
+    <button class="tab-btn" onclick="showSection('recompensas')">🎁 Recompensas</button>
+    <button class="tab-btn" onclick="showSection('punicoes')">😬 Punições</button>
+  </div>
+
+  <!-- ===== REGRAS ===== -->
+  <div class="section active" id="regras">
+    <p class="section-title">📜 Regras Fixas</p>
+
+    <div class="card pink">
+      <div class="card-title">
+        <div class="icon pink">🎀</div>
+        Comportamento
+      </div>
+      <ul class="item-list">
+        <li class="item"><span class="emoji">💬</span><span class="text"><strong>Tratamento:</strong> Sempre se referir ao Papai com carinho — "Papai" ou "Dada".</span></li>
+        <li class="item"><span class="emoji">🙇</span><span class="text"><strong>Obediência:</strong> Obedecer rapidamente e sem questionar.</span></li>
+        <li class="item"><span class="emoji">🌸</span><span class="text"><strong>Linguagem:</strong> Usar linguagem fofa e educada sempre.</span></li>
+        <li class="item"><span class="emoji">🤍</span><span class="text"><strong>Respeito:</strong> Mostrar respeito em palavras e ações. Birras em excesso não serão toleradas.</span></li>
+        <li class="item"><span class="emoji">✨</span><span class="text"><strong>Honestidade:</strong> Sempre contar a verdade, mesmo que tenha errado.</span></li>
+        <li class="item"><span class="emoji">🙋</span><span class="text"><strong>Permissões:</strong> Pedir permissão para sair, comer doces, postar fotos e afins.</span></li>
+      </ul>
+    </div>
+
+    <div class="card purple">
+      <div class="card-title">
+        <div class="icon purple">🌙</div>
+        Rotina
+      </div>
+      <ul class="item-list">
+        <li class="item"><span class="emoji">🌅</span><span class="text">Dar <strong>bom dia</strong> e <strong>boa noite</strong> ao Papai todo dia.</span></li>
+        <li class="item"><span class="emoji">🛏️</span><span class="text">Dormir e acordar nos horários combinados.</span></li>
+        <li class="item"><span class="emoji">🚿</span><span class="text">Manter a higiene diária sem muitos lembretes.</span></li>
+        <li class="item"><span class="emoji">🥦</span><span class="text">Fazer refeições saudáveis com frutas, vegetais e proteínas.</span></li>
+        <li class="item"><span class="emoji">📚</span><span class="text">Priorizar os estudos sempre que necessário.</span></li>
+        <li class="item"><span class="emoji">🏃</span><span class="text">Praticar alguma atividade física sempre que possível.</span></li>
+        <li class="item"><span class="emoji">😊</span><span class="text">Registrar o humor diariamente para o Papai.</span></li>
+      </ul>
+    </div>
+
+    <div class="card red">
+      <div class="card-title">
+        <div class="icon red">🛡️</div>
+        Segurança
+      </div>
+      <ul class="item-list">
+        <li class="item"><span class="emoji">🔐</span><span class="text">Usar a <strong>palavra de segurança</strong> quando se sentir desconfortável.</span></li>
+        <li class="item"><span class="emoji">🩺</span><span class="text">Informar qualquer dor, mal-estar ou problema médico.</span></li>
+        <li class="item"><span class="emoji">🚫</span><span class="text">Não conversar com estranhos sem o conhecimento do Papai.</span></li>
+        <li class="item"><span class="emoji">📍</span><span class="text">Manter o dispositivo de localização sempre ativo.</span></li>
+        <li class="item"><span class="emoji">💗</span><span class="text">A princesinha <strong>não deve se auto denegrir</strong> nem se machucar intencionalmente.</span></li>
+      </ul>
+    </div>
+
+    <div class="card green">
+      <div class="card-title">
+        <div class="icon green">🧸</div>
+        Little Space
+      </div>
+      <ul class="item-list">
+        <li class="item"><span class="emoji">🌀</span><span class="text">Tentar entrar em little space todo dia, mesmo que por pouquinho.</span></li>
+        <li class="item"><span class="emoji">📣</span><span class="text">Avisar quando entrar em little space se o Papai não estiver presente.</span></li>
+        <li class="item"><span class="emoji">🎀</span><span class="text">Manter o estilo e comportamento fofo mesmo fora de casa.</span></li>
+        <li class="item"><span class="emoji">💌</span><span class="text">Manter contato constante com o Papai — relatos do dia ou carinhos.</span></li>
+      </ul>
+    </div>
+
+    <div class="card pink">
+      <div class="card-title">
+        <div class="icon pink">👑</div>
+        Regras Especiais
+      </div>
+      <ul class="item-list">
+        <li class="item"><span class="emoji">📿</span><span class="text">Usar uniforme simbólico *(coleira, aliança, etc.)*.</span></li>
+        <li class="item"><span class="emoji">🎯</span><span class="text">Obedecer comandos simples dentro e fora das brincadeiras.</span></li>
+      </ul>
+      <div style="margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.08);font-size:0.82rem;color:rgba(255,255,255,0.5);font-style:italic;">
+        🔄 As regras serão revisadas periodicamente para garantir que continuem confortáveis e adequadas. Qualquer mudança deve ser discutida entre Papai e Princesinha.
+      </div>
+    </div>
+
+    <div class="card yellow" style="margin-top:8px;">
+      <div class="card-title">
+        <div class="icon yellow">⚠️</div>
+        Alergias & Preferências
+      </div>
+      <ul class="item-list">
+        <li class="item"><span class="emoji">🥛</span><span class="text"><strong>Intolerante à lactose</strong> — evitar leite e derivados.</span></li>
+        <li class="item"><span class="emoji">🍋</span><span class="text"><strong>Alérgica</strong> a frutas cítricas, doce de amendoim, caramelo e frutos do mar.</span></li>
+        <li class="item"><span class="emoji">🍖</span><span class="text">Não come carne com osso.</span></li>
+        <li class="item"><span class="emoji">🥗</span><span class="text">Come pouca verdura — prefere texturas suaves (evitar cebola).</span></li>
+        <li class="item"><span class="emoji">🍫</span><span class="text">Chocolates favoritos: <strong>Kinder</strong> e <strong>Ouro Branco</strong>.</span></li>
+        <li class="item"><span class="emoji">🍝</span><span class="text">Adora comida <strong>italiana</strong> e <strong>mexicana</strong>.</span></li>
+        <li class="item"><span class="emoji">🎂</span><span class="text">Aniversário: <strong>17 de dezembro</strong> 🎉</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== TAREFAS ===== -->
+  <div class="section" id="tarefas">
+    <p class="section-title">✅ Tarefas</p>
+
+    <!-- TODO DIA -->
+    <div class="card purple">
+      <div class="card-title">
+        <div class="icon purple">🌟</div>
+        Todo Dia
+      </div>
+      <ul class="item-list">
+        <li class="item"><span class="emoji">🥤</span><span class="text">Beber pelo menos <strong>2L de água</strong>.</span></li>
+        <li class="item"><span class="emoji">🛏️</span><span class="text">Arrumar a cama pela manhã.</span></li>
+        <li class="item"><span class="emoji">🧴</span><span class="text">Skincare noturno antes de dormir.</span></li>
+        <li class="item"><span class="emoji">🌅</span><span class="text">Mandar <strong>bom dia</strong> e <strong>boa noite</strong> ao Papai.</span></li>
+        <li class="item"><span class="emoji">🎙️</span><span class="text">Mandar um <strong>áudio fofinho</strong> contando como foi o dia.</span></li>
+        <li class="item"><span class="emoji">😊</span><span class="text">Registrar o <strong>humor do dia</strong> pro Papai.</span></li>
+        <li class="item"><span class="emoji">📸</span><span class="text">Foto do espacinho dela <strong>arrumadinho</strong> antes de dormir.</span></li>
+        <li class="item"><span class="emoji">🧸</span><span class="text">Checar no objeto de conforto antes de dormir.</span></li>
+        <li class="item"><span class="emoji">🌀</span><span class="text">Entrar em <strong>little space</strong>, mesmo que por pouquinho.</span></li>
+      </ul>
+    </div>
+
+    <!-- SEG TER SEX -->
+    <div class="card pink">
+      <div class="day-badge">📅 Segunda · Terça · Sexta</div>
+      <ul class="item-list">
+        <li class="item"><span class="emoji">🍽️</span><span class="text">Comer <strong>algo</strong> ao chegar em casa — mesmo que pequeno (Antes das 20h, não quero você passando mal).</span></li>
+        <li class="item"><span class="emoji">👗</span><span class="text">Separar a roupa do dia seguinte antes de dormir.</span></li>
+        <li class="item"><span class="emoji">📚</span><span class="text">Estudar ou revisar por <strong>30 minutos</strong>.</span></li>
+        <li class="item"><span class="emoji">🎨</span><span class="text">Desenhar ou colorir algo e mandar foto pro Papai.</span></li>
+        <li class="item"><span class="emoji">🧸</span><span class="text">Dormir abraçada ao pelúcia e mandar fotinho.</span></li>
+      </ul>
+    </div>
+
+    <!-- QUA QUI -->
+    <div class="card yellow">
+      <div class="day-badge" style="background:rgba(251,191,36,0.15);border-color:rgba(251,191,36,0.3);color:#fbbf24;">📅 Quarta · Quinta <span class="tag heavy">dias pesados</span></div>
+      <ul class="item-list">
+        <li class="item"><span class="emoji">✅</span><span class="text"><strong>Mandar mensagem</strong> quando chegar em casa (chegou bem 🏠).</span></li>
+        <li class="item"><span class="emoji">📝</span><span class="text">Organizar as anotações da faculdade <strong>rapidinho</strong>.</span></li>
+        <li class="item"><span class="emoji">🥤</span><span class="text">Beber água. <span class="tag bonus">bônus</span></span></li>
+      </ul>
+    </div>
+
+    <!-- SABADO -->
+    <div class="card green">
+      <div class="day-badge" style="background:rgba(74,222,128,0.15);border-color:rgba(74,222,128,0.3);color:#4ade80;">📅 Sábado</div>
+      <ul class="item-list">
+        <li class="item"><span class="emoji">🧹</span><span class="text">Arrumar o quarto e lavar a roupa.</span></li>
+        <li class="item"><span class="emoji">🛁</span><span class="text">Momento de autocuidado — banho caprichado, hidratação.</span></li>
+        <li class="item"><span class="emoji">📖</span><span class="text">Ler pelo menos <strong>10 páginas</strong> de algo.</span></li>
+        <li class="item"><span class="emoji">🧸</span><span class="text">Usar roupa confortável/fofa em casa e mandar foto.</span></li>
+        <li class="item"><span class="emoji">🎬</span><span class="text">Assistir um desenho ou filme de infância favorito.</span></li>
+      </ul>
+    </div>
+
+    <!-- DOMINGO -->
+    <div class="card purple">
+      <div class="day-badge" style="background:rgba(129,140,248,0.15);border-color:rgba(129,140,248,0.3);color:#818cf8;">📅 Domingo <span class="tag optional">livre</span></div>
+      <ul class="item-list">
+        <li class="item"><span class="emoji">📸</span><span class="text">Mandar foto de algo que a deixou feliz. <span class="tag optional">opcional</span></span></li>
+        <li class="item"><span class="emoji">🎨</span><span class="text">Desenhar algo "pro Papai". <span class="tag optional">opcional</span></span></li>
+        <li class="item"><span class="emoji">🎵</span><span class="text">Mandar uma música que a fez se sentir pequenininha. <span class="tag optional">opcional</span></span></li>
+      </ul>
+    </div>
+
+    <!-- Little Space -->
+    <div class="card pink">
+      <div class="card-title">
+        <div class="icon pink">🧸</div>
+        Tarefas de Little Space
+      </div>
+      <ul class="item-list">
+        <li class="item"><span class="emoji">🖍️</span><span class="text">Montar algo fofo — origami, massinha, LEGO.</span></li>
+        <li class="item"><span class="emoji">🎞️</span><span class="text">Contar pro Papai um personagem favorito e por que gosta.</span></li>
+        <li class="item"><span class="emoji">🎙️</span><span class="text">Mandar áudio com <strong>voz de criança</strong> contando o dia.</span></li>
+        <li class="item"><span class="emoji">🖼️</span><span class="text">Desenhar algo especial "pra o Papai" e mandar foto.</span></li>
+        <li class="item"><span class="emoji">🙏</span><span class="text">Pedir permissão pra algo que normalmente decidiria sozinha.</span></li>
+        <li class="item"><span class="emoji">📸</span><span class="text">Mandar foto sendo ela mesma — jeito pequenininho.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== RECOMPENSAS ===== -->
+  <div class="section" id="recompensas">
+    <p class="section-title">🎁 Recompensas</p>
+
+    <div class="card green">
+      <div class="card-title">
+        <div class="icon green">📦</div>
+        Presentes Físicos
+      </div>
+      <ul class="item-list">
+        <li class="item"><span class="emoji">🍫</span><span class="text">Kinder ou Ouro Branco.</span></li>
+        <li class="item"><span class="emoji">📦</span><span class="text">Pacotinho surpresa pelo correio.</span></li>
+        <li class="item"><span class="emoji">🎁</span><span class="text">Caixinha temática — snacks italianos, chocolates sem lactose.</span></li>
+        <li class="item"><span class="emoji">🧸</span><span class="text">Pelúcia novo.</span></li>
+        <li class="item"><span class="emoji">🎀</span><span class="text">Ela escolhe o próximo mimo que o Papai manda.</span></li>
+      </ul>
+    </div>
+
+    <div class="card purple">
+      <div class="card-title">
+        <div class="icon purple">📱</div>
+        Digitais & à Distância
+      </div>
+      <ul class="item-list">
+        <li class="item"><span class="emoji">🎬</span><span class="text">Assistir filme ou série juntos online.</span></li>
+        
+        <li class="item"><span class="emoji">🎵</span><span class="text">Playlist especial feita pelo Papai só pra ela.</span></li>
+        <li class="item"><span class="emoji">💌</span><span class="text">Carta ou mensagem longa e carinhosa.</span></li>
+        <li class="item"><span class="emoji">📞</span><span class="text">Call sem hora pra acabar — ela escolhe a duração.</span></li>
+        <li class="item"><span class="emoji">📷</span><span class="text">Foto ou vídeo surpresa do Papai.</span></li>
+        <li class="item"><span class="emoji">🎠</span><span class="text">Assistir um desenho juntos na call.</span></li>
+        <li class="item"><span class="emoji">🌟</span><span class="text">Stickers personalizados de vocês dois.</span></li>
+      </ul>
+    </div>
+
+    <div class="card pink">
+      <div class="card-title">
+        <div class="icon pink">👑</div>
+        Dentro da Dinâmica
+      </div>
+      <ul class="item-list">
+        <li class="item"><span class="emoji">🌙</span><span class="text">Dia sem nenhuma tarefa.</span></li>
+        <li class="item"><span class="emoji">✨</span><span class="text">Apelido especial por tempo limitado.</span></li>
+        <li class="item"><span class="emoji">🎯</span><span class="text">Escolher a própria recompensa de uma lista especial.</span></li>
+        <li class="item"><span class="emoji">💜</span><span class="text">Elogios e carinho especial do Papai.</span></li>
+        <li class="item"><span class="emoji">🕹️</span><span class="text">Tempo extra de brincadeiras.</span></li>
+        <li class="item"><span class="emoji">🌟</span><span class="text">Atividade especial escolhida por ela.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== PUNIÇÕES ===== -->
+  <div class="section" id="punicoes">
+    <p class="section-title">😬 Punições</p>
+
+    <div class="card red">
+      <div class="card-title">
+        <div class="icon red">✍️</div>
+        Reflexão & Escrita
+      </div>
+      <ul class="item-list">
+        <li class="item"><span class="emoji">🪑</span><span class="text">Cantinho do castigo — tempo de reflexão.</span></li>
+        <li class="item"><span class="emoji">📝</span><span class="text">Escrever <strong>5x</strong> o que deveria ter feito.</span></li>
+        <li class="item"><span class="emoji">💌</span><span class="text">Cartinha de desculpas explicando o erro, o motivo, os sentimentos e como vai melhorar.</span></li>
+        <li class="item"><span class="emoji">📋</span><span class="text">Listar <strong>3 formas</strong> de melhorar na semana seguinte.</span></li>
+        <li class="item"><span class="emoji">📓</span><span class="text">Relatório do dia mais detalhado que o normal.</span></li>
+      </ul>
+    </div>
+
+    <div class="card yellow">
+      <div class="card-title">
+        <div class="icon yellow">🚫</div>
+        Restrições
+      </div>
+      <ul class="item-list">
+        <li class="item"><span class="emoji">🍫</span><span class="text">Sem doces até cumprir a tarefa pendente.</span></li>
+        <li class="item"><span class="emoji">📺</span><span class="text">Sem Filmes.</span></li>
+        <li class="item"><span class="emoji">📱</span><span class="text">Sem app favorito por X horas.</span></li>
+        <li class="item"><span class="emoji">🎮</span><span class="text">Perda de privilégios — tempo de tela, mimos.</span></li>
+        <li class="item"><span class="emoji">😴</span><span class="text">Dormir no horário estabelecido sem exceção no dia seguinte.</span></li>
+      </ul>
+    </div>
+
+    <div class="card purple">
+      <div class="card-title">
+        <div class="icon purple">➕</div>
+        Tarefas Extras
+      </div>
+      <ul class="item-list">
+        <li class="item"><span class="emoji">📌</span><span class="text">Tarefa bônus escolhida pelo Papai.</span></li>
+        <li class="item"><span class="emoji">📚</span><span class="text">Estudar <strong>15 minutos</strong> a mais no dia seguinte.</span></li>
+      </ul>
+    </div>
+
+    <div class="card pink">
+      <div class="card-title">
+        <div class="icon pink">👑</div>
+        Dentro da Dinâmica
+      </div>
+      <ul class="item-list">
+        <li class="item"><span class="emoji">⬇️</span><span class="text">Perda de pontos acumulados.</span></li>
+        <li class="item"><span class="emoji">🎁</span><span class="text">Sem recompensa da semana.</span></li>
+        <li class="item"><span class="emoji">🎲</span><span class="text">Papai escolhe a tarefa do dia seguinte em segredo.</span></li>
+        <li class="item"><span class="emoji">🖐️</span><span class="text">Palmada leve e segura — conforme combinado.</span></li>
+      </ul>
+    </div>
+  </div>
+
+</div><!-- end container -->
+
+<footer>
+  <div class="hearts">🐑 🖤 🦖 🖤 🐑</div>
+  <p>Feito com amor pelo Papai 💜</p>
+</footer>
+
+<div class="floaters">
+  <span class="floater" style="animation-duration:18s;animation-delay:0s;">🐑</span>
+  <span class="floater" style="animation-duration:24s;animation-delay:6s;">🦖</span>
+  <span class="floater" style="animation-duration:20s;animation-delay:12s;">🧸</span>
+  <span class="floater" style="animation-duration:22s;animation-delay:3s;">🦕</span>
+  <span class="floater" style="animation-duration:19s;animation-delay:9s;">🐑</span>
+</div>
+
+<script>
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+</script>
+
+</body>
+</html>
